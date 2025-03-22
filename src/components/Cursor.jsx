@@ -19,7 +19,7 @@ const Cursor = () => {
     links.forEach((link) => {
       link.addEventListener("mousemove", () => {
         gsap.to(cursorRef.current, {
-          scale: 4,
+          scale: 3,
           backgroundColor: "#0176bd70",
         });
       });
