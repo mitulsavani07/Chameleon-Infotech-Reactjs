@@ -9,6 +9,7 @@ import { useGSAP } from "@gsap/react";
 import Cursor from "./components/cursor";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollSmoother } from "gsap-trial/ScrollSmoother"; // Ensure correct import
+import Footer from "./components/Footer";
  
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
@@ -37,13 +38,14 @@ function App() {
             <img
               src={Background}
               alt="Background"
-              className="absolute top-0 inset-x-0 -z-10 main-background"
+              className="absolute top-0 inset-x-0 -z-10 main-background min-h-[450px] "
             />
             <Navbar />
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/about" element={<About />} />
             </Routes>
+            <Footer/>
           </Router>
         </div>
       </div>
