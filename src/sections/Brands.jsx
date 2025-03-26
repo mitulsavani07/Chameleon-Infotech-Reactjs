@@ -1,11 +1,30 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const Brands = () => {
   const marqueeRef = useRef(null);
+  const main = useRef();
 
-  useGSAP(() => {
+  useEffect(() => {
+    const boxes = gsap.utils.toArray('.brands-logo');
+    boxes.forEach((box) => {
+      gsap.to(box, {
+        x: -150,
+        scrollTrigger: {
+          trigger: box,
+          start: 'bottom bottom',
+          end: 'top 20%',
+          scrub: true,
+        },
+      });
+    });
+  }, []);
+
+  useEffect(() => {
     const mm = gsap.matchMedia();
 
     mm.add("(max-width: 991px)", () => {
@@ -23,11 +42,11 @@ const Brands = () => {
   return (
     <div className="overflow-hidden container brands-imgs">
       <div className="flex items-center my-10 md:my-16 justify-between" ref={marqueeRef}>
-        <img src="/brands/fulfillagent.png" alt="Fulfillagent" className="mx-4" />
-        <img src="/brands/mugbee.png" alt="mugbee" className="mx-4" />
-        <img src="/brands/everprint.png" alt="Everprint" className="mx-4" />
-        <img src="/brands/pawzcraft.png" alt="pawzcraft" className="mx-4" />
-        <img src="/brands/unlmitd.png" alt="unlmitd" className="mx-4" />
+        <img src="/brands/fulfillagent.png" alt="Fulfillagent" className="mx-4 brands-logo" />
+        <img src="/brands/mugbee.png" alt="mugbee" className="mx-4 brands-logo" />
+        <img src="/brands/everprint.png" alt="Everprint" className="mx-4 brands-logo" />
+        <img src="/brands/pawzcraft.png" alt="pawzcraft" className="mx-4 brands-logo" />
+        <img src="/brands/unlmitd.png" alt="unlmitd" className="mx-4 brands-logo" />
       </div>
     </div>
   );

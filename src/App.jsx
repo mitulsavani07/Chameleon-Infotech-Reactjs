@@ -10,6 +10,7 @@ import Cursor from "./components/cursor";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollSmoother } from "gsap-trial/ScrollSmoother"; // Ensure correct import
 import Footer from "./components/Footer";
+import Newsletter from "./sections/Newsletter";
  
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
@@ -34,7 +35,7 @@ function App() {
       <div id="smooth-wrapper" ref={main}>
         <div id="smooth-content">
           <Router>
-            <Cursor />
+            {/* <Cursor /> */}
             <img
               src={Background}
               alt="Background"
@@ -45,6 +46,7 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/about" element={<About />} />
             </Routes>
+            <Newsletter/>
             <Footer/>
           </Router>
         </div>
