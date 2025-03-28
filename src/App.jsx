@@ -20,8 +20,8 @@ function App() {
 
   useGSAP(() => {
     smoother.current = ScrollSmoother.create({
-      smooth: 2,
-      effects: true,
+      smooth: 1,
+      effects: false,
     });
 
     gsap.from(".main-background", {

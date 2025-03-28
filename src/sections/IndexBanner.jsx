@@ -72,7 +72,7 @@ const IndexBanner = () => {
     h1.innerHTML = splitName; // Set the innerHTML to the concatenated string
   }
   return (
-    <section className="container text-center my-10 md:my-16">
+    <section id="bannerSection" className="container text-center my-10 md:my-16">
       <h4
         ref={indexBanner}
         className="text-xl md:text-2xl lg:text-3xl xl:text-4xl font-medium mb-2"
