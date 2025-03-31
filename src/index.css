@@ -73,6 +73,7 @@
 .container {
   @apply mx-auto md:px-5 px-4
 }
+html{@apply overflow-x-hidden}
 body{@apply font-primary text-sm lg:text-base text-textprimary}
 nav a.active{@apply font-bold}
 
