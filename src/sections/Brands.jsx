@@ -1,6 +1,5 @@
 import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -19,6 +18,7 @@ const Brands = () => {
           start: 'bottom bottom',
           end: 'top 20%',
           scrub: true,
+          pin: false
         },
       });
     });

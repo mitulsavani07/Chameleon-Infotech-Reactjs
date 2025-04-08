@@ -1,8 +1,9 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef } from "react";
 import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-gsap.registerPlugin(ScrollTrigger); // Register ScrollTrigger
+gsap.registerPlugin(ScrollTrigger);
 
 const cardData = [
   {
@@ -49,23 +50,24 @@ const cardData = [
 
 function ScrollingCard() {
   const cardsRef = useRef(null);
+  const cardWrapperRef = useRef(null);
   let scrollTrigger; // Declare scrollTrigger outside of useEffect
 
-  useEffect(() => {
+  useGSAP(() => {
     const races = cardsRef.current;
+    const cardWrapper = cardWrapperRef.current;
     const card = gsap.utils.toArray('.card');
-    const cardWrapper = gsap.utils.toArray('.cardWrapper');
     const bannerSection = document.querySelector('.brands-imgs');
     const mm = gsap.matchMedia();
 
-    const getScrollAmount = () => {
-      let racesWidth = races.scrollWidth;
-      return -(racesWidth - window.innerWidth);
-    };
+    // const getScrollAmount = () => {
+    //   let racesWidth = races.scrollWidth;
+    //   return -(racesWidth - window.innerWidth);
+    // };
 
     mm.add("(min-width:1024px)", () => {
       gsap.set(card, {
-        trigger: bannerSection,
+        // trigger: cardWrapper,
         xPercent: 0,
         x: (i) => -i * 350,
         rotate: 10,
@@ -129,13 +131,13 @@ function ScrollingCard() {
 
     return () => {
       if (scrollTrigger) {
-        scrollTrigger.kill(); // Cleanup on unmount
+        ScrollTrigger.getAll().forEach(trigger => trigger.kill());
       }
     };
   }, []);
 
   return (
-    <div className="overflow-hidden card-main flex flex-col justify-center items-center cardWrapper">
+    <div ref={cardWrapperRef} className="overflow-hidden card-main flex flex-col justify-center items-center cardWrapper">
       <div className="container my-10 md:my-36">
         <div className="max-w-[730px] w-full mx-auto text-center">
           <h2 className="text-2xl md:text-3xl lg:text-5xl font-bold">
