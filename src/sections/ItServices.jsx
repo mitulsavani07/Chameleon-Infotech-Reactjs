@@ -1,9 +1,4 @@
-import React, { useEffect, useRef } from "react";
-import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
+import React from "react";
 
 const services = [
   {
@@ -141,45 +136,7 @@ const ServiceCard = ({ title, description, image, color, tools, bgcolor }) => (
   </div>
 );
 
-function ItServices() {
-  useGSAP(() => {
-    // Pin the title
-    ScrollTrigger.create({
-      trigger: ".overlap-text",
-      start: "top top",
-      endTrigger: ".servicecontainer",
-      end: "bottom bottom",
-      pin: true,
-      pinSpacing: false,
-      scrub: false,
-      markers: false,
-    });
-  
-    // Animate each service card
-    gsap.utils.toArray(".servicecard-wrapper").forEach((card) => {
-      gsap.fromTo(
-        card,
-        {
-          scale: 0.8,
-          rotate: 4,
-          opacity: 0.8,
-        },
-        {
-          scale: 1,
-          rotate: 0,
-          opacity: 1,
-          scrollTrigger: {
-            trigger: card,
-            start: "top center",
-            end: "center center",
-            scrub: 2,
-            markers: false,
-          },
-          ease: "power2.out",
-        }
-      );
-    });
-  }, []);  
+function ItServices() { 
   return (
     <div className="container my-10 md:my-36 servicecontainer">
       <div className="sticky top-0 overlap-text">

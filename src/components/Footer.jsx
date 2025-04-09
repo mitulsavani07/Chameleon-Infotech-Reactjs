@@ -1,76 +1,13 @@
-import React, { useRef, useEffect } from "react";
+import React from "react";
 import Logo from "/logo.svg";
 import { NavLink } from "react-router-dom";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
 
 const Footer = () => {
-  const footerRef = useRef(null);
-  const logoRef = useRef(null);
-  const menuRef = useRef(null);
-  const copyrightRef = useRef(null);
-
-  useEffect(() => {
-    const footerElement = footerRef.current;
-
-    gsap.fromTo(
-      logoRef.current,
-      { x: -100, opacity: 0 },
-      {
-        scrollTrigger: {
-          trigger: footerElement,
-          start: "top bottom",
-          end: "top center",
-          scrub: true,
-          toggleActions: "play none none reverse",
-        },
-        x: 0,
-        duration: 1,
-        opacity: 1,
-      }
-    );
-
-    gsap.fromTo(
-      menuRef.current,
-      { x: 100, opacity: 0 },
-      {
-        scrollTrigger: {
-          trigger: footerElement,
-          start: "top bottom",
-          end: "top center",
-          scrub: true,
-          toggleActions: "play none none reverse",
-        },
-        x: 0,
-        duration: 1,
-        opacity: 1,
-      }
-    );
-
-    gsap.fromTo(
-      copyrightRef.current,
-      { y: 50, opacity: 0 },
-      {
-        scrollTrigger: {
-          trigger: footerElement,
-          start: "top bottom",
-          end: "top center",
-          scrub: true,
-          toggleActions: "play none none reverse",
-        },
-        y: 0,
-        duration: 1,
-        opacity: 1,
-      }
-    );
-  }, []);
   return (
-    <footer className="pt-24 pb-11" ref={footerRef}>
+    <footer className="pt-24 pb-11">
       <div className="container">
         <div className="flex flex-wrap">
-          <div className="w-full md:w-6/12 xl:w-7/12 mb-10 md:mb-0" ref={logoRef}>
+          <div className="w-full md:w-6/12 xl:w-7/12 mb-10 md:mb-0">
             <img src={Logo} alt="Logo" className="max-w-[188px]" />
             <p className="mt-7 max-w-[400px]">
               Founded in 2011, Chameleon Infotech LLP is a leading website
@@ -78,7 +15,7 @@ const Footer = () => {
               globally.
             </p>
           </div>
-          <div className="w-4/12 md:w-2/12" ref={menuRef}>
+          <div className="w-4/12 md:w-2/12">
             <h3 className="text-xl font-semibold">Page</h3>
             <ul className="font-medium mt-7 space-y-4">
               <li><NavLink to="/">Home</NavLink></li>
@@ -88,7 +25,7 @@ const Footer = () => {
               <li><NavLink to="/portfolio">Portfolio</NavLink></li>
             </ul>
           </div>
-          <div className="w-8/12 md:w-4/12 xl:w-3/12" ref={menuRef}>
+          <div className="w-8/12 md:w-4/12 xl:w-3/12">
             <h3 className="text-xl font-semibold">Contact</h3>
             <ul className="font-medium mt-7 space-y-4">
               <li className="flex items-center">
@@ -115,7 +52,7 @@ const Footer = () => {
             </ul>
           </div>
           {/* bottom content */}
-          <div className="border-t border-[#4444442f] w-full mt-12" ref={copyrightRef}>
+          <div className="border-t border-[#4444442f] w-full mt-12">
             <ul className="font-medium mt-7 text-sm flex leading-[100%] justify-center flex-wrap">
               <li className="px-2 border-r-[1.5px]">
                 Terms & Conditions

@@ -78,7 +78,7 @@ body{@apply font-primary text-sm lg:text-base text-textprimary}
 nav a.active{@apply font-bold}
 
 /* header animation */
-header{@apply animate-[slideUp_0.8s_ease-out]}
+/* header{@apply animate-[slideUp_0.8s_ease-out]}
 @keyframes slideUp {
   from {
     opacity: 0;
@@ -88,6 +88,6 @@ header{@apply animate-[slideUp_0.8s_ease-out]}
     opacity: 1;
     transform: translateY(0);
   }
-}
+} */
 .banner-heading span:empty{@apply block}
 .brands-imgs img{@apply opacity-30 duration-800 ease-out brightness-0 hover:opacity-100 hover:brightness-100 max-w-[140px] lg:max-w-[200px]}

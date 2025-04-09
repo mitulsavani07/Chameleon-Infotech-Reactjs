@@ -10,7 +10,7 @@ function Home() {
       <IndexBanner/>
       <Brands/>
       <ScrollingCard/>
-      {/* <ItServices /> */}
+      <ItServices />
     </>
   );
 }
