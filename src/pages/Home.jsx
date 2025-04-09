@@ -3,6 +3,7 @@ import IndexBanner from '../sections/IndexBanner';
 import Brands from '../sections/Brands';
 import ScrollingCard from '../sections/ScrollingCard';
 import ItServices from '../sections/ItServices';
+import Projects from '../sections/Projects';
 
 function Home() {
   return (
@@ -10,7 +11,8 @@ function Home() {
       <IndexBanner/>
       <Brands/>
       <ScrollingCard/>
-      {/* <ItServices /> */}
+      <ItServices />
+      <Projects/>
     </>
   );
 }

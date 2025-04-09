@@ -57,7 +57,7 @@ function ScrollingCard() {
     const races = cardsRef.current;
     const cardWrapper = cardWrapperRef.current;
     const card = gsap.utils.toArray('.card');
-    const bannerSection = document.querySelector('.brands-imgs');
+    const bannerSection = document.querySelector('#bannerSection');
     const mm = gsap.matchMedia();
 
     // const getScrollAmount = () => {

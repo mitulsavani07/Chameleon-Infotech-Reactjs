@@ -41,7 +41,7 @@ const Brands = () => {
 
   return (
     <div className="overflow-hidden container brands-imgs">
-      <div className="flex items-center my-10 md:my-16 justify-between" ref={marqueeRef}>
+      <div className="flex items-center my-10 md:my-0 justify-between" ref={marqueeRef}>
         <img src="/brands/fulfillagent.png" alt="Fulfillagent" className="mx-4 brands-logo" />
         <img src="/brands/mugbee.png" alt="mugbee" className="mx-4 brands-logo" />
         <img src="/brands/everprint.png" alt="Everprint" className="mx-4 brands-logo" />
