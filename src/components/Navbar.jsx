@@ -53,7 +53,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="container py-5">
+    <div className="container py-5 sticky z-50">
       <header className="bg-white rounded-full px-5 py-2.5 md:p-2.5 flex items-center justify-between overflow-hidden">
         <div className="logo md:pl-5">
           <NavLink to="/">

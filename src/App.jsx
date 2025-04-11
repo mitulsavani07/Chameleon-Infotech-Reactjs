@@ -11,6 +11,8 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollSmoother } from "gsap-trial/ScrollSmoother"; // Ensure correct import
 import Footer from "./components/Footer";
 import Newsletter from "./sections/Newsletter";
+import Blog from "./pages/Blog";
+import Article from "./pages/Article";
  
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
@@ -45,6 +47,8 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/about" element={<About />} />
+              <Route path="/blog" element={<Blog />} />
+              <Route path="/blog/:slug" element={<Article />} />
             </Routes>
             <Newsletter/>
             <Footer/>

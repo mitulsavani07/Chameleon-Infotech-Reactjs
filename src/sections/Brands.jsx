@@ -1,15 +1,16 @@
 import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { brandsData } from '../data/brands'; // Import the brands data
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Brands = () => {
   const marqueeRef = useRef(null);
-  const main = useRef();
 
   useEffect(() => {
     const boxes = gsap.utils.toArray('.brands-logo');
+
     boxes.forEach((box) => {
       gsap.to(box, {
         x: -150,
@@ -18,10 +19,14 @@ const Brands = () => {
           start: 'bottom bottom',
           end: 'top 20%',
           scrub: true,
-          pin: false
+          pin: false,
         },
       });
     });
+
+    return () => {
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    };
   }, []);
 
   useEffect(() => {
@@ -29,24 +34,29 @@ const Brands = () => {
 
     mm.add("(max-width: 991px)", () => {
       gsap.to(marqueeRef.current, {
-        xPercent: -100, // Move it to the left completely
+        xPercent: -100,
         ease: "linear",
         repeat: -1,
-        duration: 10, // Adjust speed
+        duration: 10,
       });
     });
 
-    return () => mm.revert(); // Clean up animation on unmount
+    return () => {
+      mm.revert();
+    };
   }, []);
 
   return (
     <div className="overflow-hidden container brands-imgs">
       <div className="flex items-center my-10 md:my-0 justify-between" ref={marqueeRef}>
-        <img src="/brands/fulfillagent.png" alt="Fulfillagent" className="mx-4 brands-logo" />
-        <img src="/brands/mugbee.png" alt="mugbee" className="mx-4 brands-logo" />
-        <img src="/brands/everprint.png" alt="Everprint" className="mx-4 brands-logo" />
-        <img src="/brands/pawzcraft.png" alt="pawzcraft" className="mx-4 brands-logo" />
-        <img src="/brands/unlmitd.png" alt="unlmitd" className="mx-4 brands-logo" />
+        {brandsData.map((brand, index) => (
+          <img
+            key={index}
+            src={brand.image}
+            alt={brand.name}
+            className="mx-4 brands-logo"
+          />
+        ))}
       </div>
     </div>
   );
