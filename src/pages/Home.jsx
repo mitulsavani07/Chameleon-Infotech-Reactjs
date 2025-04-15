@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import IndexBanner from '../sections/IndexBanner';
 import Brands from '../sections/Brands';
 import ScrollingCard from '../sections/ScrollingCard';
@@ -9,12 +9,11 @@ import Testimonials from '../sections/Testimonials';
 import BlogPost from '../sections/BlogPost';
 
 function Home() {
-  const bannerRef = useRef(null); // 👈 Shared ref
   return (
     <>
-      <IndexBanner bannerRef={bannerRef} />
+      <IndexBanner />
       <Brands/>
-      <ScrollingCard bannerRef={bannerRef}/>
+      <ScrollingCard/>
       <ItServices />
       <Projects/>
       <TextAnimation/>
