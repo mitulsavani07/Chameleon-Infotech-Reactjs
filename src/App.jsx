@@ -1,59 +1,69 @@
-import React, { useRef } from "react";
-import Background from "/main-background.png";
-import Navbar from "./components/Navbar";
-import { BrowserRouter as Router, Route, Routes } from "react-router";
+import React, { useEffect } from "react";
+import Lenis from "@studio-freight/lenis";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
+// Pages & Components
 import Home from "./pages/Home";
 import About from "./pages/about";
-import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
-import Cursor from "./components/cursor";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ScrollSmoother } from "gsap-trial/ScrollSmoother"; // Ensure correct import
-import Footer from "./components/Footer";
-import Newsletter from "./sections/Newsletter";
 import Blog from "./pages/Blog";
 import Article from "./pages/Article";
- 
-gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import Newsletter from "./sections/Newsletter";
+import Background from "/main-background.png";
+
+gsap.registerPlugin(ScrollTrigger);
 
 function App() {
-  const main = useRef(); // Fixed typo
-  const smoother = useRef();
-
-  useGSAP(() => {
-    smoother.current = ScrollSmoother.create({
-      smooth: 1,
-      effects: false,
+  useEffect(() => {
+    const lenis = new Lenis({
+      duration: 1.2,
+      smooth: true,
+      smoothTouch: false,
+      direction: "vertical",
     });
 
-    gsap.from(".main-background", {
-      opacity: 0,
-      duration: 1,
-    });
-  });
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+
+    // Sync Lenis with ScrollTrigger
+    lenis.on("scroll", ScrollTrigger.update);
+
+    // Optional: refresh triggers after fonts/images load
+    setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 100);
+
+    return () => {
+      lenis.destroy();
+    };
+  }, []);
 
   return (
     <>
-      <div id="smooth-wrapper" ref={main}>
-        <div id="smooth-content">
-          <Router>
-            {/* <Cursor /> */}
-            <img
-              src={Background}
-              alt="Backg round"
-              className="absolute top-0 inset-x-0 -z-10 main-background min-h-[450px] "
-            />
-            <Navbar />
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/blog" element={<Blog />} />
-              <Route path="/blog/:slug" element={<Article />} />
-            </Routes>
-            <Newsletter/>
-            <Footer/>
-          </Router>
-        </div>
+      <div id="app-wrapper">
+        <Router>
+          <img
+            src={Background}
+            alt="Background"
+            className="absolute top-0 inset-x-0 -z-10 main-background min-h-[450px]"
+          />
+          <Navbar />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/blog/:slug" element={<Article />} />
+          </Routes>
+          <Newsletter />
+          <Footer />
+        </Router>
       </div>
     </>
   );

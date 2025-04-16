@@ -99,8 +99,8 @@ function Projects() {
       <h2 className="text-2xl md:text-3xl lg:text-5xl font-bold text-center leading-tight capitalize">
         Innovative Projects & <br /> Success Stories
       </h2>
-      <div className="flex flex-wrap mt-20 items-center">
-        <div className="w-full md:w-1/2 space-y-12 sticky top-0 z-10">
+      <div className="flex flex-wrap mt-5 md:mt-20 items-center">
+        <div className="w-full md:w-1/2 space-y-12">
           {projectData.map((project, index) => (
             <div
               key={project.id}
@@ -128,7 +128,7 @@ function Projects() {
           ))}
         </div>
 
-        <div className="w-full md:w-1/2">
+        <div className="w-full mt-5 md:mt-0 md:w-1/2">
           <div className="relative">
             <img src={Frame} alt="Frame" />
             <div className="absolute inset-x-4 bottom-5 top-9">
