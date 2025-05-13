@@ -13,6 +13,7 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Newsletter from "./sections/Newsletter";
 import Background from "/main-background.png";
+import ServicesBanner from "./sections/ServicesBanner";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -58,6 +59,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
+            <Route path="/services" element={<ServicesBanner />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/blog/:slug" element={<Article />} />
           </Routes>

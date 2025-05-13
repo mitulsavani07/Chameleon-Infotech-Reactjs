@@ -22,8 +22,8 @@ export const OurStory = [
     title: "Founded Chameleon Infotech with a mission to transform businesses through technology.",
     details:
       "Chameleon Infotech was founded with the mission to help businesses leverage technology for smarter, more efficient operations. We started as a small team of passionate IT professionals, offering consulting, software development, and digital solutions to businesses seeking growth in a rapidly evolving digital world.",
-    backgroundColor: "#FFF0FE",
-    color: "#C929CC",
+    backgroundColor: "#FFEFEE",
+    color: "#F87979",
   },
   {
     id: 3,
@@ -35,8 +35,8 @@ export const OurStory = [
     title: "Founded Chameleon Infotech with a mission to transform businesses through technology.",
     details:
       "Chameleon Infotech was founded with the mission to help businesses leverage technology for smarter, more efficient operations. We started as a small team of passionate IT professionals, offering consulting, software development, and digital solutions to businesses seeking growth in a rapidly evolving digital world.",
-    backgroundColor: "#FFEFEE",
-    color: "#F87979",
+    backgroundColor: "#FFF0FE",
+    color: "#C929CC",
   },
   {
     id: 4,

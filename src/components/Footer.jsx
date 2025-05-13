@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from "react";
 import Logo from "/logo.svg";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -8,16 +8,17 @@ gsap.registerPlugin(ScrollTrigger);
 
 const Footer = () => {
 
+  const footerRef = useRef(null);
+  const location = useLocation(); // 👈 get current route
+
   useEffect(() => {
-    const items = gsap.utils.toArray(".footer-items");
-  
-    items.forEach((item) => {
+    const ctx = gsap.context(() => {
       gsap.fromTo(
-        item,
-        { y: 50, opacity: 0 },
+        footerRef.current,
+        { y: 100, opacity: 0 },
         {
           scrollTrigger: {
-            trigger: item,
+            trigger: footerRef.current,
             start: "top bottom",
             end: "top center",
             scrub: true,
@@ -25,13 +26,20 @@ const Footer = () => {
           },
           y: 0,
           opacity: 1,
-          duration: 1,
+          duration: 1.2,
+          ease: "power3.out",
         }
       );
-    });
-  }, []);  
+    }, footerRef);
+
+    // Optional: Clean up GSAP/ScrollTrigger on route change
+    return () => {
+      ctx.revert();
+      ScrollTrigger.refresh(); // 👈 refresh after cleaning
+    };
+  }, [location.pathname]); // 👈 run animation on every route change
   return (
-    <footer className="pt-24 pb-11">
+    <footer ref={footerRef} className="pt-24 pb-11">
       <div className="container">
         <div className="flex flex-wrap">
           <div className="w-full md:w-6/12 xl:w-7/12 mb-10 md:mb-0 footer-items">
