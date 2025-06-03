@@ -21,14 +21,14 @@ const Navbar = () => {
   useGSAP(() => {
     // Check if the screen is mobile
     if (window.innerWidth >= 768) return;
-  
+
     tl.current = gsap.timeline({ paused: true });
-  
+
     tl.current.to(menuRef.current, {
       right: 0,
       duration: 0.5,
     });
-  
+
     tl.current.from(
       ".navmenu a",
       {
@@ -39,10 +39,9 @@ const Navbar = () => {
       },
       "-=0.3"
     );
-  
+
     tl.current.from(".menu-close", { opacity: 0 });
   }, []);
-  
 
   const openMenu = () => {
     if (isMobile) tl.current.play();
@@ -57,10 +56,13 @@ const Navbar = () => {
       <header className="bg-white rounded-full px-5 py-2.5 md:p-2.5 flex items-center justify-between overflow-hidden">
         <div className="logo md:pl-5">
           <NavLink to="/">
-            <img src={Logo} alt="logo" className="w-[120px] lg:w-[160px]" />
+            <img src={Logo} alt="logo" className="w-[120px] lg:w-[160px]" loading="lazy" />
           </NavLink>
         </div>
-        <button className="hamburger-button inline-block md:hidden" onClick={openMenu}>
+        <button
+          className="hamburger-button inline-block md:hidden"
+          onClick={openMenu}
+        >
           <svg
             className="w-7 h-7"
             width="100%"
@@ -82,7 +84,10 @@ const Navbar = () => {
           ref={menuRef}
           className="navmenu md:grid grid-cols-[1fr_auto] items-center md:w-[calc(100%-120px)] lg:w-[calc(100%-160px)] fixed bg-[#ffffffa1] backdrop-blur-md top-0 bottom-0 w-full h-full z-10 -right-full p-10 text-xl md:bg-transparent md:text-base md:static md:h-auto md:p-0"
         >
-          <button className="menu-close float-right mb-10 md:hidden" onClick={closeMenu}>
+          <button
+            className="menu-close float-right mb-10 md:hidden"
+            onClick={closeMenu}
+          >
             <svg
               className="w-8 h-8"
               width="100%"
@@ -101,9 +106,36 @@ const Navbar = () => {
             </svg>
           </button>
           <nav className="clear-both flex-col md:flex-row flex uppercase font-medium space-y-10 md:space-y-0 md:space-x-8 lg:space-x-11 justify-center">
-            <NavLink to="/">Home</NavLink>
-            <NavLink to="/about">About</NavLink>
-            <NavLink to="/services">Services</NavLink>
+            <NavLink
+              to="/"
+              onClick={() => {
+                if (setIsMobile) {
+                  closeMenu(); // Close the menu after clicking
+                }
+              }}
+            >
+              Home
+            </NavLink>
+            <NavLink
+              to="/about"
+              onClick={() => {
+                if (setIsMobile) {
+                  closeMenu(); // Close the menu after clicking
+                }
+              }}
+            >
+              About
+            </NavLink>
+            <NavLink
+              to="/services"
+              onClick={() => {
+                if (setIsMobile) {
+                  closeMenu(); // Close the menu after clicking
+                }
+              }}
+            >
+              Services
+            </NavLink>
           </nav>
           <NavLink
             to="/contact-us"

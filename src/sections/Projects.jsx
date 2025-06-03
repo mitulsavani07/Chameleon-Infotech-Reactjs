@@ -37,15 +37,15 @@ function Projects() {
         onUpdate: (self) => {
           const progress = self.progress;
           const newIndex = Math.round(progress * (totalProjects - 1));
-        
+
           setCurrentIndex((prevIndex) => {
             if (prevIndex !== newIndex) {
               const prev = textRefs.current[prevIndex];
               const current = textRefs.current[newIndex];
-        
+
               // Fade out previous title
               gsap.to(prev.title, { opacity: 0.3, duration: 0.3 });
-        
+
               // Collapse previous description
               gsap.to(prev.desc, {
                 height: 0,
@@ -55,13 +55,13 @@ function Projects() {
                 duration: 0.4,
                 ease: "power2.inOut",
               });
-        
+
               // Fade in current title
               gsap.to(current.title, { opacity: 1, duration: 0.3 });
-        
+
               // Expand current description with smooth height
               const fullHeight = current.desc.scrollHeight;
-        
+
               gsap.fromTo(
                 current.desc,
                 {
@@ -79,15 +79,18 @@ function Projects() {
                   immediateRender: false,
                   onComplete: () => {
                     // let it go back to auto so it stays natural
-                    gsap.set(current.desc, { height: "auto", clearProps: "height,overflow" });
+                    gsap.set(current.desc, {
+                      height: "auto",
+                      clearProps: "height,overflow",
+                    });
                   },
                 }
               );
             }
-        
+
             return newIndex;
           });
-        },        
+        },
       });
     }, sectionRef);
 
@@ -130,21 +133,27 @@ function Projects() {
 
         <div className="w-full mt-5 md:mt-0 md:w-1/2">
           <div className="relative">
-            <img src={Frame} alt="Frame" />
+            <img src={Frame} alt="Frame" loading="lazy" />
             <div className="absolute inset-x-4 bottom-5 top-9">
               <img
                 src={projectData[currentIndex].image}
                 alt={projectData[currentIndex].title}
                 className="w-full h-full object-cover transition-all duration-500"
+                loading="lazy"
               />
             </div>
           </div>
 
           <div className="mt-6">
-            <h5 className="font-bold text-xl">{projectData[currentIndex].title}</h5>
+            <h5 className="font-bold text-xl">
+              {projectData[currentIndex].title}
+            </h5>
             <ul className="capitalize text-sm font-medium gap-3 flex flex-wrap mt-5">
               {projectData[currentIndex].features.map((feature, index) => (
-                <li key={index} className="py-1 border rounded-full inline-flex px-4">
+                <li
+                  key={index}
+                  className="py-1 border rounded-full inline-flex px-4"
+                >
                   {feature}
                 </li>
               ))}

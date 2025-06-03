@@ -3,6 +3,7 @@ import React from 'react'
 import ServicesBanner from '../sections/ServicesBanner'
 import ScrollingCard from '../sections/ScrollingCard'
 import ItServices from '../sections/ItServices'
+import SuccessStories from '../sections/SuccessStories'
 
 
 function Services() {
@@ -11,6 +12,7 @@ function Services() {
       <ServicesBanner/>
       <ScrollingCard/>
       <ItServices />
+      <SuccessStories/>
     </>
   )
 }

@@ -11,7 +11,7 @@ function ItServices() {
         <div className='max-w-[1300px] mx-auto space-y-14'>
           <div className='bg-[#F9F6FD] px-4 py-4 md:py-8 md:px-8 lg:px-20 lg:py-14 rounded-3xl flex items-center flex-wrap'>
             <div className='w-full md:w-1/3 md:order-1'>
-              <img src="/it-services/web-design.svg" alt="web design" className='max-w-60 sm:max-w-80 mx-auto w-full' />
+              <img src="/it-services/web-design.svg" alt="web design" className='max-w-60 sm:max-w-80 mx-auto w-full' loading="lazy" />
             </div>
             <div className='w-full md:w-2/3 md:pr-5 lg:pr-20 pt-10 md:pt-0 text-center md:text-left'>
               <h3 className='text-[#8D50ED] font-heading text-2xl lg:text-4xl mb-4 lg:mb-10'>Web Design</h3>
