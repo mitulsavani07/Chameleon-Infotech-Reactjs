@@ -133,13 +133,12 @@ function Projects() {
 
         <div className="w-full mt-5 md:mt-0 md:w-1/2">
           <div className="relative">
-            <img src={Frame} alt="Frame" loading="lazy" />
+            <img src={Frame} alt="Frame" />
             <div className="absolute inset-x-4 bottom-5 top-9">
               <img
                 src={projectData[currentIndex].image}
                 alt={projectData[currentIndex].title}
                 className="w-full h-full object-cover transition-all duration-500"
-                loading="lazy"
               />
             </div>
           </div>

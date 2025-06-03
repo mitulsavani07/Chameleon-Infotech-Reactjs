@@ -17,7 +17,7 @@ const TestimonialCard = ({ name, feedback, image, bgColor, textColor }) => (
       </div>
     </div>
     <div className='sm:w-60 w-full'>
-      <img src={image} alt={name} className='rounded-[20px]' loading="lazy" />
+      <img src={image} alt={name} className='rounded-[20px]' />
     </div>
   </div>
 );

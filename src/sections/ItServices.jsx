@@ -15,7 +15,6 @@ const ServiceCard = ({ title, description, listitem1, listitem2, listitem3, imag
         src={`/it-services/${image}`}
         alt={title}
         className="max-w-60 sm:max-w-80 mx-auto w-full"
-        loading="lazy"
       />
     </div>
     <div className="w-full md:w-2/3 md:pr-5 lg:pr-20 pt-10 md:pt-0 text-center md:text-left">
@@ -43,7 +42,6 @@ const ServiceCard = ({ title, description, listitem1, listitem2, listitem3, imag
                 src={`/it-services/${tool.src}`}
                 alt={tool.alt}
                 className="w-6 h-6 lg:w-8 lg:h-8 mix-blend-luminosity"
-                loading="lazy"
               />
             </span>
           </li>

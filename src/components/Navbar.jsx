@@ -56,7 +56,7 @@ const Navbar = () => {
       <header className="bg-white rounded-full px-5 py-2.5 md:p-2.5 flex items-center justify-between overflow-hidden">
         <div className="logo md:pl-5">
           <NavLink to="/">
-            <img src={Logo} alt="logo" className="w-[120px] lg:w-[160px]" loading="lazy" />
+            <img src={Logo} alt="logo" className="w-[120px] lg:w-[160px]" />
           </NavLink>
         </div>
         <button

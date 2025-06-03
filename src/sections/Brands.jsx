@@ -55,7 +55,6 @@ const Brands = () => {
             src={brand.image}
             alt={brand.name}
             className="mx-4 brands-logo"
-            loading="lazy"
           />
         ))}
       </div>

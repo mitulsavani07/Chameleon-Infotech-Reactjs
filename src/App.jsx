@@ -55,7 +55,6 @@ function App() {
             src={Background}
             alt="Background"
             className="absolute top-0 inset-x-0 -z-10 main-background min-h-[450px]"
-            loading="lazy"
           />
           <Navbar />
           <Routes>

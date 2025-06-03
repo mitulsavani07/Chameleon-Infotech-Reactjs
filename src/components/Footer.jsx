@@ -43,7 +43,7 @@ const Footer = () => {
       <div className="container">
         <div className="flex flex-wrap">
           <div className="w-full md:w-6/12 xl:w-7/12 mb-10 md:mb-0 footer-items">
-            <img src={Logo} alt="Logo" className="max-w-[188px]" loading="lazy" />
+            <img src={Logo} alt="Logo" className="max-w-[188px]" />
             <p className="mt-7 max-w-[400px]">
               Founded in 2011, Chameleon Infotech LLP is a leading website
               design and development company in India that offers services

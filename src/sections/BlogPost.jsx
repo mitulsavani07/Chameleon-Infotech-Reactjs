@@ -44,7 +44,7 @@ const BlogPost = () => {
             ref={el => postRefs.current[index] = el}
           >
             <Link to={`/blog/${post.slug}`}>
-              <img src={post.image} alt={post.title} className='rounded-3xl w-full' loading="lazy" />
+              <img src={post.image} alt={post.title} className='rounded-3xl w-full' />
               <div className='flex items-center justify-between flex-wrap mt-7'>
                 <span className={`font-bold tracking-widest`} style={{ color: post.color }}>
                   SHOPIFY
