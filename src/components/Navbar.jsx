@@ -138,7 +138,7 @@ const Navbar = () => {
             </NavLink>
           </nav>
           <NavLink
-            to="/contact-us"
+            to="/contact"
             className="bg-primary text-white font-bold lg:text-lg px-9 py-4 md:py-4 lg:py-5 md:px-6 lg:px-9 rounded-full inline-block mt-10 md:mt-0 leading-[100%]"
           >
             Get into touch
