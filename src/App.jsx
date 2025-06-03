@@ -13,7 +13,7 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Newsletter from "./sections/Newsletter";
 import Background from "/main-background.png";
-import Services from "./pages/services";
+import Services from "./pages/Services";
 // import ServicesBanner from "./sections/ServicesBanner";
 
 gsap.registerPlugin(ScrollTrigger);
