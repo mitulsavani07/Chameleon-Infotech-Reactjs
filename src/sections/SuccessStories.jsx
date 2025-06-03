@@ -71,7 +71,6 @@ function SuccessStories() {
                 src={data.image}
                 alt={data.title}
                 className="w-full object-cover transition-all duration-500 rounded-[20px]"
-                loading="lazy"
               />
               <h5 className="font-bold text-lg mt-6">{data.title}</h5>
               <ul className="capitalize text-sm font-medium gap-1 md:gap-3 flex flex-wrap mt-5">
