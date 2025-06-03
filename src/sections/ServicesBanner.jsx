@@ -74,52 +74,53 @@ const ServicesBanner = () => {
           Your IT Partner – <br /> Solutions That Scale
         </h1>
         <span
-          className="-top-20 left-0 animate-card capitalize absolute text-[10px] sm:text-sm md:text-base inline-block text-center p-4 md:p-4.5 backdrop-blur-xs font-bold text-primary md:rounded-tl-2xl md:rounded-tr-2xl md:rounded-bl-2xl rounded-tl-lg rounded-tr-lg rounded-bl-lg bg-white/70"
+          className="-top-20 left-0 animate-card capitalize absolute text-[10px] sm:text-sm md:text-base inline-block text-center px-4 py-2 md:p-4.5 backdrop-blur-xs font-bold text-primary md:rounded-tl-2xl md:rounded-tr-2xl md:rounded-bl-2xl rounded-tl-lg rounded-tr-lg rounded-bl-lg bg-white/70"
         >
           Laravel
         </span>
         <span
-          className="animate-card capitalize absolute text-[10px] sm:text-sm md:text-base inline-block text-center p-4 md:p-4.5 backdrop-blur-xs font-bold text-primary md:rounded-tl-2xl md:rounded-tr-2xl md:rounded-bl-2xl rounded-tl-lg rounded-tr-lg rounded-bl-lg bg-white/70"
+          className="animate-card capitalize -bottom-2 md:bottom-[unset] md:top-0 md:left-1/10 absolute text-[10px] sm:text-sm md:text-base inline-block text-center px-4 py-2 md:p-4.5 backdrop-blur-xs font-bold text-primary md:rounded-tl-2xl md:rounded-tr-2xl md:rounded-bl-2xl rounded-tl-lg rounded-tr-lg rounded-bl-lg bg-white/70"
         >
           java
         </span>
         <span
-          className="top-1/2 -translate-y-1/2 left-30 animate-card capitalize absolute text-[10px] sm:text-sm md:text-base inline-block text-center p-4 md:p-4.5 backdrop-blur-xs font-bold text-primary md:rounded-tl-2xl md:rounded-tr-2xl md:rounded-bl-2xl rounded-tl-lg rounded-tr-lg rounded-bl-lg bg-white/70"
+          className="top-1/2 -translate-y-1/2 left-30 animate-card capitalize absolute text-[10px] sm:text-sm md:text-base inline-block text-center px-4 py-2 md:p-4.5 backdrop-blur-xs font-bold text-primary md:rounded-tl-2xl md:rounded-tr-2xl md:rounded-bl-2xl rounded-tl-lg rounded-tr-lg rounded-bl-lg bg-white/70"
         >
           Shopify
         </span>
         <span
-          className="left-1/3 top-1/2 -translate-1/2 animate-card capitalize absolute text-[10px] sm:text-sm md:text-base inline-block text-center p-4 md:p-4.5 backdrop-blur-xs font-bold text-primary md:rounded-tl-2xl md:rounded-tr-2xl md:rounded-bl-2xl rounded-tl-lg rounded-tr-lg rounded-bl-lg bg-white/70"
+          className="left-10 md:left-[45%] md:-translate-y-full top-1/2 -translate-1/2 animate-card capitalize absolute text-[10px] sm:text-sm md:text-base inline-block text-center px-4 py-2 md:p-4.5 backdrop-blur-xs font-bold text-primary md:rounded-tl-2xl md:rounded-tr-2xl md:rounded-bl-2xl rounded-tl-lg rounded-tr-lg rounded-bl-lg bg-white/70"
         >
           Html / css
         </span>
         <span
-          className="-bottom-14 left-1/3 animate-card capitalize absolute text-[10px] sm:text-sm md:text-base inline-block text-center p-4 md:p-4.5 backdrop-blur-xs font-bold text-primary md:rounded-tl-2xl md:rounded-tr-2xl md:rounded-bl-2xl rounded-tl-lg rounded-tr-lg rounded-bl-lg bg-white/70"
+          className="-bottom-1 left-0 md:-bottom-14 md:left-1/3 animate-card capitalize absolute text-[10px] sm:text-sm md:text-base inline-block text-center px-4 py-2 md:p-4.5 backdrop-blur-xs font-bold text-primary md:rounded-tl-2xl md:rounded-tr-2xl md:rounded-bl-2xl rounded-tl-lg rounded-tr-lg rounded-bl-lg bg-white/70"
         >
           Mongo db
         </span>
         <span
-          className="-top-7 right-60 animate-card capitalize absolute text-[10px] sm:text-sm md:text-base inline-block text-center p-4 md:p-4.5 backdrop-blur-xs font-bold text-primary md:rounded-tl-2xl md:rounded-tr-2xl md:rounded-bl-2xl rounded-tl-lg rounded-tr-lg rounded-bl-lg bg-white/70"
+          className="-top-7 right-60 animate-card capitalize absolute text-[10px] sm:text-sm md:text-base inline-block text-center px-4 py-2 md:p-4.5 backdrop-blur-xs font-bold text-primary md:rounded-tl-2xl md:rounded-tr-2xl md:rounded-bl-2xl rounded-tl-lg rounded-tr-lg rounded-bl-lg bg-white/70"
         >
           React JS
         </span>
         <span
-          className="top-1/2 -translate-y-1/2 right-24 animate-card capitalize absolute text-[10px] sm:text-sm md:text-base inline-block text-center p-4 md:p-4.5 backdrop-blur-xs font-bold text-primary md:rounded-tl-2xl md:rounded-tr-2xl md:rounded-bl-2xl rounded-tl-lg rounded-tr-lg rounded-bl-lg bg-white/70"
+          className="top-1/2 -translate-y-1/2 right-0 md:right-24 animate-card capitalize absolute text-[10px] sm:text-sm md:text-base inline-block text-center px-4 py-2 md:p-4.5 backdrop-blur-xs font-bold text-primary md:rounded-tl-2xl md:rounded-tr-2xl md:rounded-bl-2xl rounded-tl-lg rounded-tr-lg rounded-bl-lg bg-white/70"
         >
           Wordpress
         </span>
         <span
-          className="-bottom-14 right-10 animate-card capitalize absolute text-[10px] sm:text-sm md:text-base inline-block text-center p-4 md:p-4.5 backdrop-blur-xs font-bold text-primary md:rounded-tl-2xl md:rounded-tr-2xl md:rounded-bl-2xl rounded-tl-lg rounded-tr-lg rounded-bl-lg bg-white/70"
+          className="-bottom-2 right-0 md:-bottom-14 md:right-10 animate-card capitalize absolute text-[10px] sm:text-sm md:text-base inline-block text-center px-4 py-2 md:p-4.5 backdrop-blur-xs font-bold text-primary md:rounded-tl-2xl md:rounded-tr-2xl md:rounded-bl-2xl rounded-tl-lg rounded-tr-lg rounded-bl-lg bg-white/70"
         >
           docker
         </span>
         <span
-          className="-top-7 right-0 animate-card capitalize absolute text-[10px] sm:text-sm md:text-base inline-block text-center p-4 md:p-4.5 backdrop-blur-xs font-bold text-primary md:rounded-tl-2xl md:rounded-tr-2xl md:rounded-bl-2xl rounded-tl-lg rounded-tr-lg rounded-bl-lg bg-white/70"
+          className="-top-7 right-0 animate-card capitalize absolute text-[10px] sm:text-sm md:text-base inline-block text-center px-4 py-2 md:p-4.5 backdrop-blur-xs font-bold text-primary md:rounded-tl-2xl md:rounded-tr-2xl md:rounded-bl-2xl rounded-tl-lg rounded-tr-lg rounded-bl-lg bg-white/70"
         >
           UI / UX
         </span>
       </div>
     </section>
+    
   );
 };
 

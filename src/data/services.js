@@ -2,7 +2,10 @@ export const services = [
   {
     title: "Web Design",
     description:
-      "We build high-performance eCommerce websites for retail, fashion, electronics, and more, ensuring smooth functionality across all devices.",
+      "We design stunning, user-centric websites that not only look impressive but also convert visitors into customers. Our designs are modern, responsive, and tailored to your brand's goals.",
+    listitem1: "Fully responsive and mobile-optimized layouts",
+    listitem2: "Creative, brand-aligned design language",
+    listitem3: "SEO-friendly structure and clean code",
     image: "web-design.svg",
     bgcolor: "#F9F6FD",
     color: "#8D50ED",
@@ -17,7 +20,10 @@ export const services = [
   {
     title: "Web Development",
     description:
-      "We build high-performance eCommerce websites for retail, fashion, electronics, and more, ensuring smooth functionality across all devices.",
+      "We develop fast, secure, and scalable web applications that empower businesses to thrive in the digital world. Whether it's a landing page or a complex portal, we've got it covered.",
+    listitem1: "Custom web solutions built on modern tech stacks",
+    listitem2: "Cross-browser and cross-device compatibility",
+    listitem3: "High performance with security best practices",
     image: "web-development.svg",
     bgcolor: "#FFF0FE",
     color: "#C929CC",
@@ -33,7 +39,10 @@ export const services = [
   {
     title: "Mobile App Developement",
     description:
-      "We build high-performance eCommerce websites for retail, fashion, electronics, and more, ensuring smooth functionality across all devices.",
+      "We build seamless mobile apps for Android and iOS that deliver outstanding user experiences. From idea to deployment, we take care of it all.",
+    listitem1: "Native and cross-platform development (Flutter, React Native)",
+    listitem2: "User-friendly interfaces with smooth interactions",
+    listitem3: "App store deployment and ongoing support",
     image: "mobile-app-developement.svg",
     bgcolor: "#FFF8EE",
     color: "#EDA623",
@@ -49,7 +58,10 @@ export const services = [
   {
     title: "UI / UX Designing",
     description:
-      "We build high-performance eCommerce websites for retail, fashion, electronics, and more, ensuring smooth functionality across all devices.",
+      "We create intuitive and elegant interfaces that enhance usability and engagement. Our designs are research-driven and crafted to meet user needs at every step.",
+    listitem1: "Wireframes, prototypes, and design systems ",
+    listitem2: "Consistent, clean, and scalable visual design",
+    listitem3: "User research and A/B testing for optimization",
     image: "ui-ux-designing.svg",
     bgcolor: "#FFEFEE",
     color: "#F87979",
@@ -63,7 +75,10 @@ export const services = [
   {
     title: "E-commerce",
     description:
-      "We build high-performance eCommerce websites for retail, fashion, electronics, and more, ensuring smooth functionality across all devices.",
+      "We provide robust e-commerce solutions that drive sales and deliver seamless shopping experiences. Whether you're starting out or scaling up, we’re your trusted partner.",
+    listitem1: "Custom or platform-based store setups (Shopify, WooCommerce)",
+    listitem2: "Easy product, inventory, and order management",
+    listitem3: "Integrated secure payment gateways and shipping APIs",
     image: "e-commerce.svg",
     bgcolor: "#F1F9F7",
     color: "#22C59C",
@@ -75,7 +90,10 @@ export const services = [
   {
     title: "Content management system",
     description:
-      "We build high-performance eCommerce websites for retail, fashion, electronics, and more, ensuring smooth functionality across all devices.",
+      "Manage and update your digital content with ease through our powerful CMS integrations. From blogs to corporate sites, we make content control effortless.",
+    listitem1: "Custom or popular CMS platforms (WordPress, headless CMS)",
+    listitem2: "Role-based access and content versioning",
+    listitem3: "Scalable and secure content infrastructure",
     image: "content-management-system.svg",
     bgcolor: "#ECF5FE",
     color: "#0176BD",

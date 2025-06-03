@@ -5,7 +5,7 @@ function ItServices() {
     <>
       <div className="container my-10 md:my-36">
         <h2 className="text-2xl md:text-3xl lg:text-5xl font-bold leading-tight max-w-[600px] w-full mx-auto text-center">
-          Innovative IT Services for Your Business Growth 
+          Innovative IT Services Tailored to Grow Your Business
         </h2>
         <h4 className='text-[14vh] md:text-[20vh] lg:text-[30vh] text-center font-heading text-[#F3F8FD] leading-tight'>ABOUT <br /> SERVICE</h4>
         <div className='max-w-[1300px] mx-auto space-y-14'>

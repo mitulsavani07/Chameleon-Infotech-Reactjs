@@ -3,40 +3,40 @@ export const cardData = [
     id: 1,
     color: "#8D50ED",
     bgColor: "#F9F6FD",
-    title: "Tailored IT Strategies for Your Business",
+    title: "Crafting Impactful Web Experiences",
     description:
-      "We thoroughly analyze your business needs and craft customized IT solutions that align with your goals, ensuring efficiency and scalability.",
+      "We specialize in creating visually stunning and highly functional websites that captivate your audience and drive engagement. From intuitive UI/UX design to robust frontend and backend development with technologies like React and Angular, we build digital platforms that truly stand out.",
   },
   {
     id: 2,
     color: "#C929CC",
     bgColor: "#FFF0FE",
-    title: "Innovative Software Development",
+    title: "Accelerating Your Online Store Success",
     description:
-      "We create cutting-edge software tailored to your specific needs, enhancing efficiency and productivity.",
+      "Dominate the e-commerce landscape with our comprehensive Shopify expertise. We design custom Shopify themes that reflect your brand, develop powerful Shopify apps to extend functionality, and provide ongoing support to ensure your online store thrives.",
   },
   {
     id: 3,
     color: "#F87979",
     bgColor: "#FFEFEE",
-    title: "Cybersecurity & Compliance",
+    title: "Designing Intuitive User Experiences",
     description:
-      "Our security solutions protect your data and ensure compliance with industry regulations.",
+      "User-centric design is at the core of everything we do. Our expert UI/UX team meticulously researches, prototypes, and designs digital products that are not just beautiful, but also incredibly easy and enjoyable for your users to navigate, leading to higher conversion rates.",
   },
   {
     id: 4,
     color: "#22C59C",
     bgColor: "#F1F9F7",
-    title: "Cloud Computing Solutions",
+    title: "Boosting Your Online Presence & Speed",
     description:
-      "Scalable and secure cloud solutions to optimize your IT infrastructure and operations.",
+      "Get discovered and keep your visitors engaged. We enhance your online visibility through strategic SEO (Search Engine Optimization) and dramatically improve user experience with meticulous site speed optimization. Rank higher, load faster, and convert more.",
   },
   {
     id: 5,
     color: "#0176BD",
     bgColor: "#ECF5FE",
-    title: "24/7 IT Support & Consulting",
+    title: "Innovative Mobile Solutions for Growth",
     description:
-      "Reliable IT support and strategic consulting to keep your business running smoothly.",
+      "Extend your reach to users on the go with our custom mobile app development services. We build native and cross-platform applications for both iOS and Android, ensuring a seamless, high-performance experience that connects you directly with your audience.",
   },
 ];

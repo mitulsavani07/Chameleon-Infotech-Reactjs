@@ -77,7 +77,7 @@ const WorkWithUs = () => {
   return (
     <div ref={sectionRef} className='container my-10 md:my-36'>
       <h2 className='text-2xl md:text-3xl lg:text-5xl font-bold text-center leading-tight capitalize'>Why Work With Us?</h2>
-      <p className='text-sm xl:text-base font-medium mt-2 capitalize text-center'>We are the ideal technology partner for providing scalable</p>
+      <p className='text-sm xl:text-base font-medium mt-2 capitalize text-center'>We Are the Ideal Technology Partner for Scalable and Future-Ready Solutions.</p>
       <div className='flex flex-wrap -mx-6 mt-10 lg:mt-20'>
         {workWithUsData.map((data, index) => (
           <div key={index} className='w-full lg:w-1/2 px-6 py-3 work-col'>

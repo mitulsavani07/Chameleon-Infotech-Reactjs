@@ -141,10 +141,10 @@ function ScrollingCard() {
         <div className="container my-10 md:my-36">
           <div className="max-w-[730px] w-full mx-auto text-center">
             <h2 className="text-2xl md:text-3xl lg:text-5xl font-bold">
-              Empowering Businesses with Cutting-Edge IT Solutions
+              Empowering Businesses with Smart, Scalable IT Solutions
             </h2>
             <p className="font-medium lg:text-lg capitalize mt-4">
-              We are the ideal technology partner for providing scalable solutions.
+              Your Trusted Partner for Technology That Drives Growth
             </p>
           </div>
           <div
@@ -154,7 +154,7 @@ function ScrollingCard() {
             {cardData.map((card) => (
               <div
                 key={card.id}
-                className="py-11 px-7 rounded-3xl my-3 md:m-3 lg:my-0 lg:mx-6 w-full md:w-[calc(50%-24px)] lg:w-auto lg:min-w-[320px] card"
+                className="py-11 px-7 rounded-3xl my-3 md:m-3 lg:my-0 lg:mx-6 w-full md:w-[calc(50%-24px)] lg:w-auto lg:min-w-[360px] card"
                 style={{ backgroundColor: card.bgColor, color: card.color }}
               >
                 <span className="w-9 h-9 flex items-center justify-center bg-white rounded-full font-bold">

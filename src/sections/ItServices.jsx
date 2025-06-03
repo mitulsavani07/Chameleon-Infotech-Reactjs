@@ -6,7 +6,7 @@ import { services } from "../data/services";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const ServiceCard = ({ title, description, image, color, tools, bgcolor }) => (
+const ServiceCard = ({ title, description, listitem1, listitem2, listitem3, image, color, tools, bgcolor }) => (
   <div
     className={`bg-[${bgcolor}] px-4 py-4 md:py-8 md:px-8 lg:px-20 lg:py-14 rounded-3xl flex items-center flex-wrap servicecards`}
   >
@@ -27,9 +27,9 @@ const ServiceCard = ({ title, description, image, color, tools, bgcolor }) => (
         {description}
       </p>
       <ul className="text-sm lg:text-base space-y-3 lg:ml-7 my-5 lg:my-9">
-        <li>Custom eCommerce websites designed for your business</li>
-        <li>Custom eCommerce websites designed for your business</li>
-        <li>Custom eCommerce websites designed for your business</li>
+        <li>{listitem1}</li>
+        <li>{listitem2}</li>
+        <li>{listitem3}</li>
       </ul>
       <ul className="flex -mx-1 md:-mx-2 justify-center md:justify-start">
         {tools.map((tool, index) => (
@@ -93,8 +93,8 @@ function ItServices() {
   return (
     <div className="container my-10 md:my-36 servicecontainer">
       <div className="sticky top-0 overlap-text">
-        <h2 className="text-2xl md:text-3xl lg:text-5xl font-bold leading-tight max-w-[600px] w-full mx-auto text-center">
-          Innovative IT Services for Your Business Growth
+        <h2 className="text-2xl md:text-3xl lg:text-5xl font-bold leading-tight max-w-[700px] w-full mx-auto text-center">
+          Innovative IT Services Tailored to Grow Your Business
         </h2>
         <h4 className="text-[14vh] md:text-[20vh] lg:text-[30vh] text-center font-heading text-[#F3F8FD] leading-tight">
           ABOUT <br /> SERVICE

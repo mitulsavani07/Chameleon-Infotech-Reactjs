@@ -8,7 +8,7 @@ export const testimonialsData = [
   },
   {
     name: 'Studio Chenchen CEO',
-    feedback: "Tushar, and his company (Chameleon Infotech LLP), has been extremely professional and a great help to our agency. He is very easy to communicate with and has great Shopify expertise. We have worked with them three times on creating Shopify e-commerce sites.",
+    feedback: "Tushar, and his company (Chameleon Infotech LLP) , has been extremely professional and a great help to our agency. He is very easy to communicate with and has great Shopify expertise. We have worked with them three times on creating Shopify e-commerce sites.",
     image: 'testimonials/Olivia-Chen.jpg',
     bgColor: '#FFF0FE',
     textColor: '#C929CC',
@@ -24,7 +24,7 @@ export const testimonialsData = [
     name: 'New School Marketing Stack CEO',
     feedback: "Tushar and the team at Chameleon Infotech have been instrumental in developing innovative web & content solutions for some of my Klaviyo and Salesforce Marketing Cloud clients. Their knowledge of CSS/HTML for email development (as well as Javascript for stunning preference pages) is second to none, I couldn't recommend them enough.",
     image: 'testimonials/Sergio.jpeg',
-    bgColor: '#FFEFEE',
-    textColor: '#F87979',
+    bgColor: '#F9F6FD',
+    textColor: '#8D50ED',
   },
 ];

@@ -67,7 +67,7 @@ const Testimonials = () => {
               Honest Feedback From Valued People
             </h2>
             <p className='text-sm xl:text-base font-medium mt-4 capitalize'>
-              Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+              We Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
             </p>
           </div>
         </div>

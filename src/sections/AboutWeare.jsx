@@ -61,10 +61,10 @@ const AboutWeare = () => {
         <div className='w-full lg:w-4/12 mb-10 md:mb-0'>
           <div className='sticky top-12'>
             <h2 className='text-4xl xl:text-5xl font-bold leading-tight'>
-              Honest Feedback From Valued People
+              Our Mission, Vision & Values – The Foundation of Innovation
             </h2>
             <p className='text-sm xl:text-base font-medium mt-4 capitalize'>
-              Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+              We are the ideal technology partner for providing scalable.
             </p>
           </div>
         </div>

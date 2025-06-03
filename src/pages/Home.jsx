@@ -18,7 +18,7 @@ function Home() {
       <Projects/>
       <TextAnimation/>
       <Testimonials/>
-      <BlogPost/>
+      {/* <BlogPost/> */}
     </>
   );
 }

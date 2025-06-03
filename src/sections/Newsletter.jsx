@@ -27,8 +27,8 @@ const Newsletter = () => {
             delay: index * 0.2,
             scrollTrigger: {
               trigger: newsletterRef.current,
-              start: 'top 80%',
-              toggleActions: 'play reverse play reverse',
+              // start: 'top 80%',
+              // toggleActions: 'play reverse play reverse',
             },
           }
         );

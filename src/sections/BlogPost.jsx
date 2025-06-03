@@ -9,29 +9,26 @@ gsap.registerPlugin(ScrollTrigger);
 const BlogPost = () => {
   const postRefs = useRef([]);
 
-  useEffect(() => {
-    postRefs.current.forEach((el, index) => {
-      gsap.fromTo(el,
-        {
-          opacity: 0,
-          y: 50,
-        },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 1,
-          ease: "power2.out",
-          delay: index * 0.2,
-          scrollTrigger: {
-            trigger: el,
-            start: "top 80%",
-            end: "top 0%",
-            toggleActions: 'play reverse play reverse'
-          },
+ useEffect(() => {
+  postRefs.current.forEach((el, index) => {
+    gsap.fromTo(
+      el,
+      { opacity: 0, y: 50 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: el,
+          start: 'top 80%',
+          toggleActions: 'play reverse play reverse',
         }
-      );
-    });
-  }, []);
+      }
+    );
+  });
+}, []);
+
 
   return (
     <div className='container my-16 md:my-32 relative'>

@@ -22,7 +22,7 @@ const Footer = () => {
             start: "top bottom",
             end: "top center",
             scrub: true,
-            toggleActions: "play none none reverse",
+            // toggleActions: "play none none reverse",
           },
           y: 0,
           opacity: 1,

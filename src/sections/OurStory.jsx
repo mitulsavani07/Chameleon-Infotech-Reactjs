@@ -81,8 +81,7 @@ const OurStory = () => {
         Our Story
       </h2>
       <p className='text-sm xl:text-base font-medium mt-2 capitalize max-w-[600px]'>
-        Our work combines creativity and data-driven strategies to deliver
-        impactful Digital marketing campaigns that drive growth.
+       Our journey blends innovation, strategy, and a passion for technology to help businesses grow in the digital era.
       </p>
 
       {/* Two column masonry layout using flex */}

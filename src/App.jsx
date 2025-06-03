@@ -6,14 +6,15 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 // Pages & Components
 import Home from "./pages/Home";
-import About from "./pages/about";
+import About from "./pages/About";
 import Blog from "./pages/Blog";
 import Article from "./pages/Article";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Newsletter from "./sections/Newsletter";
 import Background from "/main-background.png";
-import ServicesBanner from "./sections/ServicesBanner";
+import Services from "./pages/services";
+// import ServicesBanner from "./sections/ServicesBanner";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -59,7 +60,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
-            <Route path="/services" element={<ServicesBanner />} />
+            <Route path="/services" element={<Services />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/blog/:slug" element={<Article />} />
           </Routes>
