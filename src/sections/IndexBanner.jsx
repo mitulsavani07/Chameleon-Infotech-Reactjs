@@ -1,12 +1,14 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
+import CountUp from 'react-countup';
 
 const IndexBanner = () => {
   const indexBanner = useRef(null);
   const indexHeading = useRef(null);
   const indexSpan1 = useRef(null);
   const indexSpan2 = useRef(null);
+  const [startCount, setStartCount] = useState(false);
 
   useGSAP(() => {
     gsap.from(indexBanner.current, { 
@@ -28,7 +30,8 @@ const IndexBanner = () => {
       opacity: 0,
       duration: 1,
       stagger: 0.2, 
-      delay: 2
+      delay: 2,
+      onComplete: () => setStartCount(true),
     });
   });
 
@@ -97,7 +100,7 @@ const IndexBanner = () => {
           ref={indexSpan2}
           className="absolute text-[10px] sm:text-sm md:text-xl bottom-[70%] sm:bottom-20 xl:text-2xl md:bottom-24 lg:bottom-10 left-0 xl:bottom-20 xl:left-20 2xl:bottom-36 2xl:left-70 max-w-[105px] sm:max-w-[150px] md:max-w-[230px] w-full inline-block text-center p-4 md:py-6 md:px-4 backdrop-blur-xs font-bold text-primary md:rounded-tl-2xl md:rounded-tr-2xl md:rounded-bl-2xl rounded-tl-lg rounded-tr-lg rounded-bl-lg -rotate-12 bg-white/70"
         >
-          <b className="text-xl sm:text-3xl xl:text-4xl block">200+</b>
+          <b className="text-xl sm:text-3xl xl:text-4xl block">{startCount ? <CountUp end={200} duration={2} suffix="+" /> : "0+"}</b>
           Happy Clients
         </span>
       </div>
