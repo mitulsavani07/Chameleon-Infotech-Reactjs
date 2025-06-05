@@ -1,8 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Lenis from "@studio-freight/lenis";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
+import { LenisContext } from "./context/LenisContext";
 
 // Pages & Components
 import Home from "./pages/Home";
@@ -15,11 +17,15 @@ import Newsletter from "./sections/Newsletter";
 import Background from "/main-background.png";
 import Services from "./pages/Services";
 import Contact from "./pages/Contact";
+import ScrollToTop from "./components/ScrollToTop";
 // import ServicesBanner from "./sections/ServicesBanner";
 
 gsap.registerPlugin(ScrollTrigger);
 
 function App() {
+  const lenisRef = useRef(null);
+  const [, setRaf] = useState(null); // just to force rerender
+
   useEffect(() => {
     const lenis = new Lenis({
       duration: 1.2,
@@ -28,6 +34,9 @@ function App() {
       direction: "vertical",
     });
 
+    lenisRef.current = lenis;
+    setRaf({}); // trigger re-render once Lenis is ready
+
     function raf(time) {
       lenis.raf(time);
       requestAnimationFrame(raf);
@@ -35,10 +44,8 @@ function App() {
 
     requestAnimationFrame(raf);
 
-    // Sync Lenis with ScrollTrigger
     lenis.on("scroll", ScrollTrigger.update);
 
-    // Optional: refresh triggers after fonts/images load
     setTimeout(() => {
       ScrollTrigger.refresh();
     }, 100);
@@ -50,26 +57,29 @@ function App() {
 
   return (
     <>
-      <div id="app-wrapper">
-        <Router>
-          <img
-            src={Background}
-            alt="Background"
-            className="absolute top-0 inset-x-0 -z-10 main-background min-h-[450px]"
-          />
-          <Navbar />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/services" element={<Services />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/blog" element={<Blog />} />
-            <Route path="/blog/:slug" element={<Article />} />
-          </Routes>
-          <Newsletter />
-          <Footer />
-        </Router>
-      </div>
+      <LenisContext.Provider value={lenisRef.current}>
+        <div id="app-wrapper">
+          <Router>
+            <ScrollToTop />
+            <img
+              src={Background}
+              alt="Background"
+              className="absolute top-0 inset-x-0 -z-10 main-background min-h-[450px]"
+            />
+            <Navbar />
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/services" element={<Services />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/blog" element={<Blog />} />
+              <Route path="/blog/:slug" element={<Article />} />
+            </Routes>
+            <Newsletter />
+            <Footer />
+          </Router>
+        </div>
+      </LenisContext.Provider>
     </>
   );
 }
