@@ -163,7 +163,7 @@ const Footer = () => {
               <li><a href="https://teams.microsoft.com/l/chat/0/0?users=tushi.rays@live.com" target="_blank"><img src="/social/Microsoft_Teams_icon.png" className="rounded-full w-8 h-8 hover:opacity-90 duration-300" alt="Microsoft Teams" /></a></li>
             </ul>
             <ul className="-mx-2 font-medium text-sm w-full lg:w-1/3 flex items-center justify-center lg:justify-end pt-5">
-              <li className="px-2 border-r-[1.5px]">Terms & Conditions</li>
+              <li className="px-2 border-r-[1.5px]"><NavLink to="/terms-conditions">Terms & Conditions</NavLink></li>
               <li className="px-2">Privacy Policy</li>
             </ul>
           </div>

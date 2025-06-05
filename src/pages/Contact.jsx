@@ -240,7 +240,7 @@ function Contact() {
               <img
                 src="/contact/clock-hour-hand.svg"
                 alt="hour hand"
-                className="absolute w-[4px] h-[28px] top-[70px] left-1/2 z-10 origin-[50%_20px]"
+                className="absolute w-[4px] h-[28px] top-[70px] left-1/2 z-10 origin-[50%_26px]"
                 style={{
                   transform: `translate(-50%, -100%) rotate(${hourDeg}deg)`,
                 }}

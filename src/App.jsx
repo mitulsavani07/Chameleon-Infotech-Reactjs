@@ -18,6 +18,7 @@ import Background from "/main-background.png";
 import Services from "./pages/Services";
 import Contact from "./pages/Contact";
 import ScrollToTop from "./components/ScrollToTop";
+import TermsConditions from "./pages/TermsConditions";
 // import ServicesBanner from "./sections/ServicesBanner";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -72,6 +73,7 @@ function App() {
               <Route path="/about" element={<About />} />
               <Route path="/services" element={<Services />} />
               <Route path="/contact" element={<Contact />} />
+              <Route path="/terms-conditions" element={<TermsConditions />} />
               <Route path="/blog" element={<Blog />} />
               <Route path="/blog/:slug" element={<Article />} />
             </Routes>
