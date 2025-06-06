@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useLayoutEffect } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -10,34 +10,29 @@ function ScrollingCard() {
   const cardsRef = useRef(null);
   const cardWrapperRef = useRef(null);
   const triggerRef = useRef(null);
-  let scrollTrigger; // Declare scrollTrigger outside of useEffect
 
-  useGSAP(() => {
-    const races = cardsRef.current;
+  
+  console.log('helo')
+
+  
+  useLayoutEffect(() => {
+    const cardsEl = cardsRef.current;
     const cardWrapper = cardWrapperRef.current;
     const trigger = triggerRef.current;
-    const card = gsap.utils.toArray('.card');
-    const bannerSection = document.querySelector('#bannerSection');
-    
+    const cards = gsap.utils.toArray(".card");
+
     const mm = gsap.matchMedia();
 
-    // const getScrollAmount = () => {
-    //   let racesWidth = races.scrollWidth;
-    //   return -(racesWidth - window.innerWidth);
-    // };
-
     mm.add("(min-width:1024px)", () => {
-      gsap.set(card, {
-        // trigger: cardWrapper,
-        xPercent: 0,
+      gsap.set(cards, {
         x: (i) => -i * 350,
         rotate: 10,
-        zIndex: (i) => card.length - i,
+        zIndex: (i) => cards.length - i,
         transformOrigin: "bottom bottom",
         force3D: true,
       });
 
-      gsap.to(card, {
+      gsap.to(cards, {
         x: (i) => i * 0,
         rotate: 0,
         ease: "power1.out",
@@ -49,88 +44,73 @@ function ScrollingCard() {
           end: "+=" + (cardWrapper.offsetWidth * 0.1),
           onUpdate: (self) => {
             if (self.progress < 0.1) {
-              gsap.set(card, {
-                rotate: 10,
-              });
-            } else if (self.progress >= 0.1 && self.progress < 1) {
-              gsap.set(card, {
-                rotate: 0,
-              });
+              gsap.set(cards, { rotate: 10 });
+            } else {
+              gsap.set(cards, { rotate: 0 });
             }
-          }
-        }
+          },
+        },
       });
 
-      const tween = gsap.to(races, {
-        transform: "translateX(-50%)",
-        duration: 3,
+      gsap.to(cardsEl, {
+        xPercent: -50,
         ease: "none",
+        scrollTrigger: {
+          trigger: ".cardWrapper",
+          start: "top top",
+          end: "top -100%",
+          pin: true,
+          scrub: 5,
+          invalidateOnRefresh: true,
+        },
       });
 
-      scrollTrigger = ScrollTrigger.create({ // Assign to the outer variable
-        trigger: ".cardWrapper",
-        start: "top top",
-        end: "top -100%",
-        pin: true,
-        animation: tween,
-        scrub: 5,
-        invalidateOnRefresh: true,
-        markers: false,
+      cards.forEach((card) => {
+        card.addEventListener("mouseenter", () =>
+          gsap.to(card, { y: -10, duration: 0.3 })
+        );
+        card.addEventListener("mouseleave", () =>
+          gsap.to(card, { y: 0, duration: 0.3 })
+        );
       });
-
-      const cardHoverAnimation = (item) => {
-        item.addEventListener('mouseenter', () => {
-          gsap.to(item, { y: -10, duration: 0.3, ease: 'power1.out' });
-        });
-        item.addEventListener('mouseleave', () => {
-          gsap.to(item, { y: 0, duration: 0.3, ease: 'power1.out' });
-        });
-      };
-
-      card.forEach(card => cardHoverAnimation(card));
     });
 
     mm.add("(max-width:1023px)", () => {
-      const cards = gsap.utils.toArray('.card');
-    
       for (let i = 0; i < cards.length; i += 2) {
-        const leftCard = cards[i];
-        const rightCard = cards[i + 1];
-    
-        if (leftCard) {
-          gsap.from(leftCard, {
+        const left = cards[i];
+        const right = cards[i + 1];
+
+        if (left) {
+          gsap.from(left, {
             x: -100,
             opacity: 0,
             duration: 0.8,
             scrollTrigger: {
-              trigger: leftCard,
+              trigger: left,
               start: "top 80%",
               toggleActions: "play reverse play reverse",
-              scrub: false,
-            }
+            },
           });
         }
-    
-        if (rightCard) {
-          gsap.from(rightCard, {
+
+        if (right) {
+          gsap.from(right, {
             x: 100,
             opacity: 0,
             duration: 0.8,
             scrollTrigger: {
-              trigger: rightCard,
+              trigger: right,
               start: "top 80%",
               toggleActions: "play reverse play reverse",
-              scrub: false,
-            }
+            },
           });
         }
       }
-    });    
+    });
 
     return () => {
-      if (scrollTrigger) {
-        ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-      }
+      ScrollTrigger.getAll().forEach((t) => t.kill());
+      mm.revert(); // Remove all matchMedia listeners
     };
   }, []);
 
