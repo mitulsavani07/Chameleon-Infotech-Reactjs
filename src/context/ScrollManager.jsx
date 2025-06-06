@@ -7,10 +7,11 @@ export default function ScrollManager() {
   const location = useLocation();
 
   useEffect(() => {
-    // Refresh all ScrollTriggers after route change
-    setTimeout(() => {
+    const timer = setTimeout(() => {
       ScrollTrigger.refresh();
-    }, 100); // Delay helps wait for new DOM
+    }, 100); // Small delay to ensure DOM is updated
+    
+    return () => clearTimeout(timer);
   }, [location.pathname]);
 
   return null;
