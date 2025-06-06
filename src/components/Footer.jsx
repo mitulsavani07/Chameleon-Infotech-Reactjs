@@ -159,12 +159,12 @@ const Footer = () => {
               <li><a href="https://www.facebook.com/chameleoninfotech" target="_blank"><img src="/social/Linkedin_icon.svg" className="w-8 h-8 hover:opacity-90 duration-300" alt="linkedin" /></a></li>
               <li><a href="https://www.upwork.com/agencies/chameleon/" target="_blank"><img src="/social/Upwork_icon.svg" className="w-8 h-8 hover:opacity-90 duration-300" alt="Upwork" /></a></li>
               <li><a href="https://dribbble.com/chameleoninfortech" target="_blank"><img src="/social/Dribbble_icon.svg" className="w-8 h-8 hover:opacity-90 duration-300" alt="Dribbble" /></a></li>
-              <li><a href="https://api.whatsapp.com/send?phone=919099499095&text=Hello%2C%20Chameleon%20Infotech!%20%0A%0AI%20need%20your%20help!" target="_blank"><img src="/social/Whatsapp_icon.svg" className="w-8 h-8 hover:opacity-90 duration-300" alt="Whatsapp" /></a></li>
-              <li><a href="https://teams.microsoft.com/l/chat/0/0?users=tushi.rays@live.com" target="_blank"><img src="/social/Microsoft_Teams_icon.png" className="rounded-full w-8 h-8 hover:opacity-90 duration-300" alt="Microsoft Teams" /></a></li>
+              {/* <li><a href="https://api.whatsapp.com/send?phone=919099499095&text=Hello%2C%20Chameleon%20Infotech!%20%0A%0AI%20need%20your%20help!" target="_blank"><img src="/social/Whatsapp_icon.svg" className="w-8 h-8 hover:opacity-90 duration-300" alt="Whatsapp" /></a></li>
+              <li><a href="https://teams.microsoft.com/l/chat/0/0?users=tushi.rays@live.com" target="_blank"><img src="/social/Microsoft_Teams_icon.png" className="rounded-full w-8 h-8 hover:opacity-90 duration-300" alt="Microsoft Teams" /></a></li> */}
             </ul>
             <ul className="-mx-2 font-medium text-sm w-full lg:w-1/3 flex items-center justify-center lg:justify-end pt-5">
               <li className="px-2 border-r-[1.5px]"><NavLink to="/terms-conditions">Terms & Conditions</NavLink></li>
-              <li className="px-2">Privacy Policy</li>
+              <li className="px-2"><NavLink to="/privacy-policy">Privacy Policy</NavLink></li>
             </ul>
           </div>
         </div>

@@ -62,7 +62,7 @@ function TermsConditions() {
         >
           Terms & Conditions
         </h1>
-        <div className="animate-card text-sm leading-[24px] md:text-base font-medium md:leading-[28px] max-w-[920px] mx-auto mt-5">
+        <div className="animate-card text-sm leading-[24px] md:text-base font-medium md:leading-[28px] max-w-[920px] mx-auto mt-5 opacity-80">
           <p>
             Chameleon Infotech LLP owns and manages this website, as well as the
             copyright to it. We offer top-notch web and software development

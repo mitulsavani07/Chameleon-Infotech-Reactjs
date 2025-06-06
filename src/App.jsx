@@ -19,7 +19,7 @@ import Services from "./pages/Services";
 import Contact from "./pages/Contact";
 import ScrollToTop from "./components/ScrollToTop";
 import TermsConditions from "./pages/TermsConditions";
-import ScrollManager from "./context/ScrollManager";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
 // import ServicesBanner from "./sections/ServicesBanner";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -63,7 +63,6 @@ function App() {
         <div id="app-wrapper">
           <Router>
             <ScrollToTop />
-            <ScrollManager/>
             <img
               src={Background}
               alt="Background"
@@ -76,6 +75,7 @@ function App() {
               <Route path="/services" element={<Services />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/terms-conditions" element={<TermsConditions />} />
+              <Route path="/privacy-policy" element={<PrivacyPolicy />} />
               <Route path="/blog" element={<Blog />} />
               <Route path="/blog/:slug" element={<Article />} />
             </Routes>
