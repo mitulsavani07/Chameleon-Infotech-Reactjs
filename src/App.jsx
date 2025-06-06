@@ -19,6 +19,7 @@ import Services from "./pages/Services";
 import Contact from "./pages/Contact";
 import ScrollToTop from "./components/ScrollToTop";
 import TermsConditions from "./pages/TermsConditions";
+import ScrollManager from "./context/ScrollManager";
 // import ServicesBanner from "./sections/ServicesBanner";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -62,6 +63,7 @@ function App() {
         <div id="app-wrapper">
           <Router>
             <ScrollToTop />
+            <ScrollManager/>
             <img
               src={Background}
               alt="Background"
