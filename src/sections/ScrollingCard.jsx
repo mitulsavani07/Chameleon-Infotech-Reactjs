@@ -13,8 +13,6 @@ function ScrollingCard() {
   let scrollTrigger; // Declare scrollTrigger outside of useEffect
 
   useGSAP(() => {
-    console.log('hello')
-
     const races = cardsRef.current;
     const cardWrapper = cardWrapperRef.current;
     const trigger = triggerRef.current;
@@ -129,11 +127,11 @@ function ScrollingCard() {
       }
     });    
 
-    // return () => {
-    //   if (scrollTrigger) {
-    //     ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-    //   }
-    // };
+    return () => {
+      if (scrollTrigger) {
+        ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+      }
+    };
   }, []);
 
   return (
