@@ -1,4 +1,4 @@
-import React, { useRef, useLayoutEffect } from "react";
+import React, { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -12,13 +12,15 @@ function ScrollingCard() {
   const triggerRef = useRef(null);
   let scrollTrigger; // Declare scrollTrigger outside of useEffect
 
-  useLayoutEffect(() => {
+  useGSAP(() => {
+    console.log('hello')
+
     const races = cardsRef.current;
     const cardWrapper = cardWrapperRef.current;
     const trigger = triggerRef.current;
-    const card = gsap.utils.toArray(".card");
-    const bannerSection = document.querySelector("#bannerSection");
-
+    const card = gsap.utils.toArray('.card');
+    const bannerSection = document.querySelector('#bannerSection');
+    
     const mm = gsap.matchMedia();
 
     // const getScrollAmount = () => {
@@ -46,7 +48,7 @@ function ScrollingCard() {
           pin: true,
           scrub: 5,
           start: "bottom top",
-          end: "+=" + cardWrapper.offsetWidth * 0.1,
+          end: "+=" + (cardWrapper.offsetWidth * 0.1),
           onUpdate: (self) => {
             if (self.progress < 0.1) {
               gsap.set(card, {
@@ -57,8 +59,8 @@ function ScrollingCard() {
                 rotate: 0,
               });
             }
-          },
-        },
+          }
+        }
       });
 
       const tween = gsap.to(races, {
@@ -67,8 +69,7 @@ function ScrollingCard() {
         ease: "none",
       });
 
-      scrollTrigger = ScrollTrigger.create({
-        // Assign to the outer variable
+      scrollTrigger = ScrollTrigger.create({ // Assign to the outer variable
         trigger: ".cardWrapper",
         start: "top top",
         end: "top -100%",
@@ -80,24 +81,24 @@ function ScrollingCard() {
       });
 
       const cardHoverAnimation = (item) => {
-        item.addEventListener("mouseenter", () => {
-          gsap.to(item, { y: -10, duration: 0.3, ease: "power1.out" });
+        item.addEventListener('mouseenter', () => {
+          gsap.to(item, { y: -10, duration: 0.3, ease: 'power1.out' });
         });
-        item.addEventListener("mouseleave", () => {
-          gsap.to(item, { y: 0, duration: 0.3, ease: "power1.out" });
+        item.addEventListener('mouseleave', () => {
+          gsap.to(item, { y: 0, duration: 0.3, ease: 'power1.out' });
         });
       };
 
-      card.forEach((card) => cardHoverAnimation(card));
+      card.forEach(card => cardHoverAnimation(card));
     });
 
     mm.add("(max-width:1023px)", () => {
-      const cards = gsap.utils.toArray(".card");
-
+      const cards = gsap.utils.toArray('.card');
+    
       for (let i = 0; i < cards.length; i += 2) {
         const leftCard = cards[i];
         const rightCard = cards[i + 1];
-
+    
         if (leftCard) {
           gsap.from(leftCard, {
             x: -100,
@@ -108,10 +109,10 @@ function ScrollingCard() {
               start: "top 80%",
               toggleActions: "play reverse play reverse",
               scrub: false,
-            },
+            }
           });
         }
-
+    
         if (rightCard) {
           gsap.from(rightCard, {
             x: 100,
@@ -122,26 +123,23 @@ function ScrollingCard() {
               start: "top 80%",
               toggleActions: "play reverse play reverse",
               scrub: false,
-            },
+            }
           });
         }
       }
-    });
+    });    
 
-    return () => {
-      // Cleanup all ScrollTriggers when component unmounts
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-      gsap.killTweensOf("*");
-    };
+    // return () => {
+    //   if (scrollTrigger) {
+    //     ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    //   }
+    // };
   }, []);
 
   return (
     <>
       <div ref={triggerRef}></div>
-      <div
-        ref={cardWrapperRef}
-        className="overflow-hidden card-main flex flex-col justify-center items-center cardWrapper"
-      >
+      <div ref={cardWrapperRef} className="overflow-hidden card-main flex flex-col justify-center items-center cardWrapper">
         <div className="container my-10 md:my-36">
           <div className="max-w-[730px] w-full mx-auto text-center">
             <h2 className="text-2xl md:text-3xl lg:text-5xl font-bold">
