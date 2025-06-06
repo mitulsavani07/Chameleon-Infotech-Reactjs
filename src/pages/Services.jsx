@@ -1,7 +1,7 @@
 import React from 'react'
 
 import ServicesBanner from '../sections/ServicesBanner'
-import ScrollingCard2 from '../sections/ScrollingCard2'
+import ScrollingCard from '../sections/ScrollingCard'
 import ItServices from '../sections/ItServices'
 import SuccessStories from '../sections/SuccessStories'
 import GrowthInfo from '../sections/GrowthInfo'
@@ -12,7 +12,7 @@ function Services() {
   return (
     <>
       <ServicesBanner/>
-      <ScrollingCard2/>
+      <ScrollingCard/>
       <ItServices />
       <SuccessStories/>
       <GrowthInfo/>

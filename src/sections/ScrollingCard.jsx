@@ -1,6 +1,5 @@
-import React, { useRef } from "react";
+import React, { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { cardData } from "../data/card";
 
@@ -12,7 +11,7 @@ function ScrollingCard() {
   const triggerRef = useRef(null);
   let scrollTrigger; // Declare scrollTrigger outside of useEffect
 
-  useGSAP(() => {
+  useLayoutEffect(() => {
     const races = cardsRef.current;
     const cardWrapper = cardWrapperRef.current;
     const trigger = triggerRef.current;
@@ -138,7 +137,7 @@ function ScrollingCard() {
     <>
       <div ref={triggerRef}></div>
       <div ref={cardWrapperRef} className="overflow-hidden card-main flex flex-col justify-center items-center cardWrapper">
-        <div className="container my-10 md:my-36">
+        <div className="container my-10 md:mb-36 md:mt-20">
           <div className="max-w-[730px] w-full mx-auto text-center">
             <h2 className="text-2xl md:text-3xl lg:text-5xl font-bold">
               Empowering Businesses with Smart, Scalable IT Solutions
