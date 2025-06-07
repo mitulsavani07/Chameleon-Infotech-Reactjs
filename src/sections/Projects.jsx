@@ -99,7 +99,7 @@ function Projects() {
 
   return (
     <div ref={sectionRef} className="container my-10 md:my-36 projects-wrapper">
-      <h2 className="text-2xl md:text-3xl lg:text-5xl font-bold text-center leading-tight capitalize">
+      <h2 className="project-title text-2xl md:text-3xl lg:text-5xl font-bold text-center leading-tight capitalize">
         Innovative Projects & <br /> Success Stories
       </h2>
       <div className="flex flex-wrap mt-5 md:mt-20 items-center">

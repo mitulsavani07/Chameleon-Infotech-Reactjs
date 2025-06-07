@@ -1,5 +1,6 @@
-import React, { useLayoutEffect, useRef } from "react";
+import React, { useRef } from "react";
 import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { cardData } from "../data/card";
 
@@ -11,7 +12,7 @@ function ScrollingCard() {
   const triggerRef = useRef(null);
   let scrollTrigger; // Declare scrollTrigger outside of useEffect
 
-  useLayoutEffect(() => {
+  useGSAP(() => {
     const races = cardsRef.current;
     const cardWrapper = cardWrapperRef.current;
     const trigger = triggerRef.current;
