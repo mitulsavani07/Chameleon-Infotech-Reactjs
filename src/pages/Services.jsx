@@ -14,7 +14,7 @@ function Services() {
       <ServicesBanner/>
       <ScrollingCard/>
       <ItServices />
-      <SuccessStories/>
+      {/* <SuccessStories/> */}
       <GrowthInfo/>
       <Faq/>
     </>
