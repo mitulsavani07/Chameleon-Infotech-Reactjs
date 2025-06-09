@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -13,22 +13,18 @@ function ScrollingCard() {
   let scrollTrigger; // Declare scrollTrigger outside of useEffect
 
   useGSAP(() => {
+
+    console.log('working')
+
     const races = cardsRef.current;
     const cardWrapper = cardWrapperRef.current;
     const trigger = triggerRef.current;
     const card = gsap.utils.toArray('.card');
-    const bannerSection = document.querySelector('#bannerSection');
     
     const mm = gsap.matchMedia();
 
-    // const getScrollAmount = () => {
-    //   let racesWidth = races.scrollWidth;
-    //   return -(racesWidth - window.innerWidth);
-    // };
-
     mm.add("(min-width:1024px)", () => {
       gsap.set(card, {
-        // trigger: cardWrapper,
         xPercent: 0,
         x: (i) => -i * 350,
         rotate: 10,
@@ -48,15 +44,9 @@ function ScrollingCard() {
           start: "bottom top",
           end: "+=" + (cardWrapper.offsetWidth * 0.1),
           onUpdate: (self) => {
-            if (self.progress < 0.1) {
-              gsap.set(card, {
-                rotate: 10,
-              });
-            } else if (self.progress >= 0.1 && self.progress < 1) {
-              gsap.set(card, {
-                rotate: 0,
-              });
-            }
+            gsap.set(card, {
+              rotate: self.progress < 0.1 ? 10 : 0,
+            });
           }
         }
       });
@@ -67,7 +57,7 @@ function ScrollingCard() {
         ease: "none",
       });
 
-      scrollTrigger = ScrollTrigger.create({ // Assign to the outer variable
+      scrollTrigger = ScrollTrigger.create({
         trigger: ".cardWrapper",
         start: "top top",
         end: "top -100%",
@@ -129,9 +119,15 @@ function ScrollingCard() {
 
     return () => {
       if (scrollTrigger) {
-        ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+        scrollTrigger.kill();
       }
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
     };
+  }, []);
+
+  useEffect(() => {
+    // Refresh ScrollTrigger on component mount
+    ScrollTrigger.refresh();
   }, []);
 
   return (
