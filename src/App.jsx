@@ -30,14 +30,15 @@ import PrivacyPolicy from "./pages/PrivacyPolicy";
 gsap.registerPlugin(ScrollTrigger);
 
 function ScrollFixer() {
-  const location = useLocation();
+  const { pathname } = useLocation();
 
   useEffect(() => {
-    // Delay helps in some deployed builds where layout takes time
-    setTimeout(() => {
-      ScrollTrigger.refresh();
-    }, 100);
-  }, [location]);
+    // Kill existing triggers before leaving the page
+    ScrollTrigger.getAll().forEach(t => t.kill());
+    // Give it a moment to remount content
+    const id = setTimeout(() => ScrollTrigger.refresh(), 100);
+    return () => clearTimeout(id);
+  }, [pathname]);
 
   return null;
 }
