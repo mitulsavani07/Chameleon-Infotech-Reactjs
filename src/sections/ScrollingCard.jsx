@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -7,137 +7,88 @@ import { cardData } from "../data/card";
 gsap.registerPlugin(ScrollTrigger);
 
 function ScrollingCard() {
-  const cardsRef = useRef(null);
-  const cardWrapperRef = useRef(null);
-  const triggerRef = useRef(null);
-  let scrollTrigger; // Declare scrollTrigger outside of useEffect
+  const cardsRef = useRef();
+  const wrapperRef = useRef();
+  const triggerRef = useRef();
 
   useGSAP(() => {
-    const races = cardsRef.current;
-    const cardWrapper = cardWrapperRef.current;
-    const trigger = triggerRef.current;
-    const card = gsap.utils.toArray('.card');
-    const bannerSection = document.querySelector('#bannerSection');
-    
-    const mm = gsap.matchMedia();
+    // Delay GSAP init
+    requestAnimationFrame(() => {
+      const cards = gsap.utils.toArray(".card");
+      const wrapper = wrapperRef.current;
+      const container = cardsRef.current;
 
-    // const getScrollAmount = () => {
-    //   let racesWidth = races.scrollWidth;
-    //   return -(racesWidth - window.innerWidth);
-    // };
+      const mm = gsap.matchMedia();
 
-    mm.add("(min-width:1024px)", () => {
-      gsap.set(card, {
-        // trigger: cardWrapper,
-        xPercent: 0,
-        x: (i) => -i * 350,
-        rotate: 10,
-        zIndex: (i) => card.length - i,
-        transformOrigin: "bottom bottom",
-        force3D: true,
-      });
+      mm.add("(min-width:1024px)", () => {
+        gsap.set(cards, {
+          x: (i) => -i * 350,
+          rotate: 10,
+          zIndex: (i) => cards.length - i,
+          transformOrigin: "bottom bottom",
+        });
 
-      gsap.to(card, {
-        x: (i) => i * 0,
-        rotate: 0,
-        ease: "power1.out",
-        scrollTrigger: {
-          trigger: trigger,
+        gsap.to(cards, {
+          x: 0,
+          rotate: 0,
+          ease: "power1.out",
+          scrollTrigger: {
+            trigger: triggerRef.current,
+            pin: true,
+            scrub: true,
+            start: "bottom top",
+            end: `+=${wrapper.offsetWidth * 0.1}`,
+          },
+        });
+
+        ScrollTrigger.create({
+          trigger: wrapper,
           pin: true,
-          scrub: 5,
-          start: "bottom top",
-          end: "+=" + (cardWrapper.offsetWidth * 0.1),
-          onUpdate: (self) => {
-            if (self.progress < 0.1) {
-              gsap.set(card, {
-                rotate: 10,
-              });
-            } else if (self.progress >= 0.1 && self.progress < 1) {
-              gsap.set(card, {
-                rotate: 0,
-              });
-            }
-          }
-        }
-      });
-
-      const tween = gsap.to(races, {
-        transform: "translateX(-50%)",
-        duration: 3,
-        ease: "none",
-      });
-
-      scrollTrigger = ScrollTrigger.create({ // Assign to the outer variable
-        trigger: ".cardWrapper",
-        start: "top top",
-        end: "top -100%",
-        pin: true,
-        animation: tween,
-        scrub: 5,
-        invalidateOnRefresh: true,
-        markers: false,
-      });
-
-      const cardHoverAnimation = (item) => {
-        item.addEventListener('mouseenter', () => {
-          gsap.to(item, { y: -10, duration: 0.3, ease: 'power1.out' });
+          end: "top -100%",
+          animation: gsap.to(container, { xPercent: -50, ease: "none" }),
+          scrub: true,
+          invalidateOnRefresh: true,
         });
-        item.addEventListener('mouseleave', () => {
-          gsap.to(item, { y: 0, duration: 0.3, ease: 'power1.out' });
-        });
-      };
 
-      card.forEach(card => cardHoverAnimation(card));
+        cards.forEach((item) => {
+          item.addEventListener("mouseenter", () =>
+            gsap.to(item, { y: -10, duration: 0.3 })
+          );
+          item.addEventListener("mouseleave", () =>
+            gsap.to(item, { y: 0, duration: 0.3 })
+          );
+        });
+      });
+
+      mm.add("(max-width:1023px)", () => {
+        cards.forEach((item, i) => {
+          gsap.from(item, {
+            x: i % 2 === 0 ? -100 : 100,
+            opacity: 0,
+            duration: 0.8,
+            scrollTrigger: {
+              trigger: item,
+              start: "top 80%",
+            },
+          });
+        });
+      });
     });
 
-    mm.add("(max-width:1023px)", () => {
-      const cards = gsap.utils.toArray('.card');
-    
-      for (let i = 0; i < cards.length; i += 2) {
-        const leftCard = cards[i];
-        const rightCard = cards[i + 1];
-    
-        if (leftCard) {
-          gsap.from(leftCard, {
-            x: -100,
-            opacity: 0,
-            duration: 0.8,
-            scrollTrigger: {
-              trigger: leftCard,
-              start: "top 80%",
-              toggleActions: "play reverse play reverse",
-              scrub: false,
-            }
-          });
-        }
-    
-        if (rightCard) {
-          gsap.from(rightCard, {
-            x: 100,
-            opacity: 0,
-            duration: 0.8,
-            scrollTrigger: {
-              trigger: rightCard,
-              start: "top 80%",
-              toggleActions: "play reverse play reverse",
-              scrub: false,
-            }
-          });
-        }
-      }
-    });    
+    return () => ScrollTrigger.getAll().forEach((t) => t.kill());
+  }, []);
 
-    return () => {
-      if (scrollTrigger) {
-        ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-      }
-    };
+  useEffect(() => {
+    const timer = setTimeout(() => ScrollTrigger.refresh(), 300);
+    return () => clearTimeout(timer);
   }, []);
 
   return (
     <>
       <div ref={triggerRef}></div>
-      <div ref={cardWrapperRef} className="overflow-hidden card-main flex flex-col justify-center items-center cardWrapper">
+      <div ref={wrapperRef}
+        className="overflow-hidden card-main flex flex-col justify-center items-center cardWrapper"
+      >
         <div className="container my-10 md:mb-36 md:mt-20">
           <div className="max-w-[730px] w-full mx-auto text-center">
             <h2 className="text-2xl md:text-3xl lg:text-5xl font-bold">

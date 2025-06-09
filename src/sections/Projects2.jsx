@@ -158,7 +158,7 @@ function Projects() {
                 projectItemsRef.current[index] = el;
                 if (index === projectData.length - 1) lastItemRef.current = el;
               }}
-              className="max-w-[520px] md:min-h-[80dvh]"
+              className="max-w-[520px] md:min-h-[80dvh] last:md:min-h-auto"
             >
               <div className="transition-opacity duration-300">
                 <h3
