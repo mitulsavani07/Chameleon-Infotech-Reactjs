@@ -11,52 +11,113 @@ function Projects() {
   const containerRef = useRef(null);
   const projectItemsRef = useRef([]);
   const rightColumnRef = useRef(null);
+  const leftColumnRef = useRef(null);
   const lastItemRef = useRef(null);
+  const mobileImagesRef = useRef([]);
+  const ctxRef = useRef();
 
   useEffect(() => {
-    // Set up project item triggers
-    projectItemsRef.current.forEach((item, index) => {
-      if (!item) return;
+    const setupAnimations = () => {
+      if (ctxRef.current) ctxRef.current.revert();
+      
+      ctxRef.current = gsap.context(() => {
+        const isMobile = window.innerWidth < 768;
 
-      ScrollTrigger.create({
-        trigger: item,
-        start: "top center",
-        end: "bottom center",
-        onEnter: () => setActiveProject(projectData[index]),
-        onEnterBack: () => setActiveProject(projectData[index]),
-        // markers: true
-      });
-    });
+        if (isMobile) {
+          projectItemsRef.current.forEach((item, index) => {
+            if (!item) return;
 
-    // Pin the right column until the last item is passed
-    // Add this after the pin ScrollTrigger creation
-    ScrollTrigger.create({
-      trigger: lastItemRef.current,
-      start: "bottom bottom",
-      onEnter: () => {
-        gsap.to(rightColumnRef.current, {
-          y: 100,
-          opacity: 0,
-          duration: 0.5,
-        });
-      },
-      onLeaveBack: () => {
-        gsap.to(rightColumnRef.current, {
-          y: 0,
-          opacity: 1,
-          duration: 0.5,
-        });
-      },
-    });
+            gsap.fromTo(item, 
+              { opacity: 0, y: 20 },
+              {
+                opacity: 1,
+                y: 0,
+                duration: 0.8,
+                scrollTrigger: {
+                  trigger: item,
+                  start: "top 80%",
+                  toggleActions: "play none none none",
+                  id: `mobile-project-${index}`
+                }
+              }
+            );
+
+            if (mobileImagesRef.current[index]) {
+              gsap.fromTo(mobileImagesRef.current[index], 
+                { opacity: 0 },
+                {
+                  opacity: 1,
+                  duration: 0.8,
+                  scrollTrigger: {
+                    trigger: mobileImagesRef.current[index],
+                    start: "top 80%",
+                    toggleActions: "play none none none",
+                    id: `mobile-image-${index}`
+                  }
+                }
+              );
+            }
+          });
+        } else {
+          projectItemsRef.current.forEach((item, index) => {
+            if (!item) return;
+
+            ScrollTrigger.create({
+              trigger: item,
+              start: "top center",
+              end: "bottom center",
+              onEnter: () => setActiveProject(projectData[index]),
+              onEnterBack: () => setActiveProject(projectData[index]),
+              id: `desktop-project-${index}`
+            });
+          });
+
+          ScrollTrigger.create({
+            trigger: lastItemRef.current,
+            start: "bottom bottom",
+            onEnter: () => {
+              gsap.to([rightColumnRef.current, leftColumnRef.current], {
+                y: -200,
+                duration: 0.5,
+                ease: "power2.out"
+              });
+            },
+            onLeaveBack: () => {
+              gsap.to([rightColumnRef.current, leftColumnRef.current], {
+                y: 0,
+                duration: 0.5,
+                ease: "power2.out"
+              });
+            },
+            id: "desktop-slide-up"
+          });
+
+          gsap.fromTo(".project-image", 
+            { opacity: 0 },
+            {
+              opacity: 1,
+              duration: 1,
+              scrollTrigger: {
+                trigger: rightColumnRef.current,
+                start: "top center",
+                toggleActions: "play none none none",
+                id: "desktop-image-fade"
+              }
+            }
+          );
+        }
+      }, containerRef);
+    };
+
+    setupAnimations();
+    const handleResize = () => setupAnimations();
+    window.addEventListener('resize', handleResize);
 
     return () => {
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+      window.removeEventListener('resize', handleResize);
+      if (ctxRef.current) ctxRef.current.revert();
     };
   }, []);
-
-  useEffect(() => {
-    gsap.fromTo(".project-image", { opacity: 0 }, { opacity: 1, duration: 1 });
-  }, [activeProject]);
 
   return (
     <div className="container my-10 md:my-36" ref={containerRef}>
@@ -64,8 +125,8 @@ function Projects() {
         Innovative Projects & <br /> Success Stories
       </h2>
       <div className="flex flex-wrap mt-20">
-        <div className="w-full md:w-1/2 md:order-1" ref={rightColumnRef}>
-          <div className="sticky top-[15%]">
+        <div className="hidden md:block w-full md:w-1/2 md:order-1" ref={rightColumnRef}>
+          <div className="md:sticky top-[15%]">
             <div className="relative">
               <img src={Frame} alt="Frame" />
               <div className="absolute inset-x-4 bottom-5 top-9">
@@ -80,10 +141,7 @@ function Projects() {
               <h5 className="font-bold">{activeProject.title}</h5>
               <ul className="capitalize text-sm font-medium gap-3 flex flex-wrap mt-5">
                 {activeProject.features.map((feature, index) => (
-                  <li
-                    key={index}
-                    className="py-1 border rounded-full inline-flex px-4"
-                  >
+                  <li key={index} className="py-1 border rounded-full inline-flex px-4">
                     {feature}
                   </li>
                 ))}
@@ -91,36 +149,51 @@ function Projects() {
             </div>
           </div>
         </div>
-        <div className="w-full md:w-1/2 space-y-12" style={{ zIndex: 10 }}>
+
+        <div className="w-full md:w-1/2 space-y-12" style={{ zIndex: 10 }} ref={leftColumnRef}>
           {projectData.map((project, index) => (
             <div
               key={project.id}
               ref={(el) => {
                 projectItemsRef.current[index] = el;
-                if (index === projectData.length - 1) {
-                  lastItemRef.current = el;
-                }
+                if (index === projectData.length - 1) lastItemRef.current = el;
               }}
-              className={`max-w-[520px] transition-opacity duration-300 ${
-                activeProject.id === project.id ? "opacity-100" : "opacity-30"
-              }`}
-              style={{ minHeight: "80vh" }}
+              className="max-w-[520px] md:min-h-[80dvh]"
             >
-              <h3
-                className="font-heading capitalize text-6xl"
-                style={{ color: project.color }}
-              >
-                <span className="text-4xl">
-                  {project.id < 10 ? `0${project.id}` : project.id}.{" "}
-                </span>
-                {project.title}
-              </h3>
-              <div
-                className={`font-medium mt-4 leading-[24px] ${
-                  activeProject.id === project.id ? "" : "hidden"
-                }`}
-                dangerouslySetInnerHTML={{ __html: project.description }}
-              />
+              <div className="transition-opacity duration-300">
+                <h3
+                  className="font-heading capitalize text-4xl md:text-5xl lg:text-6xl"
+                  style={{ color: project.color }}
+                >
+                  <span className="text-4xl">
+                    {project.id < 10 ? `0${project.id}` : project.id}.{" "}
+                  </span>
+                  {project.title}
+                </h3>
+                <div
+                  className="font-medium mt-4 leading-[24px]"
+                  dangerouslySetInnerHTML={{ __html: project.description }}
+                />
+              </div>
+              
+              <div className="md:hidden mt-8">
+                <div className="relative" ref={el => mobileImagesRef.current[index] = el}>
+                  <img src={Frame} alt="Frame" />
+                  <div className="absolute inset-x-4 bottom-5 top-9">
+                    <img src={project.image} alt={project.title} className="w-full h-full" />
+                  </div>
+                </div>
+                <div className="mt-6">
+                  <h5 className="font-bold">{project.title}</h5>
+                  <ul className="capitalize text-sm font-medium gap-3 flex flex-wrap mt-5">
+                    {project.features.map((feature, i) => (
+                      <li key={i} className="py-1 border rounded-full inline-flex px-4">
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
             </div>
           ))}
         </div>
