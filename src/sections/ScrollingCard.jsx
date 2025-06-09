@@ -26,7 +26,6 @@ function ScrollingCard() {
     //   return -(racesWidth - window.innerWidth);
     // };
 
-    mm.add("(min-width:1024px)", () => {
       gsap.set(card, {
         // trigger: cardWrapper,
         xPercent: 0,
@@ -88,44 +87,6 @@ function ScrollingCard() {
       };
 
       card.forEach(card => cardHoverAnimation(card));
-    });
-
-    mm.add("(max-width:1023px)", () => {
-      const cards = gsap.utils.toArray('.card');
-    
-      for (let i = 0; i < cards.length; i += 2) {
-        const leftCard = cards[i];
-        const rightCard = cards[i + 1];
-    
-        if (leftCard) {
-          gsap.from(leftCard, {
-            x: -100,
-            opacity: 0,
-            duration: 0.8,
-            scrollTrigger: {
-              trigger: leftCard,
-              start: "top 80%",
-              toggleActions: "play reverse play reverse",
-              scrub: false,
-            }
-          });
-        }
-    
-        if (rightCard) {
-          gsap.from(rightCard, {
-            x: 100,
-            opacity: 0,
-            duration: 0.8,
-            scrollTrigger: {
-              trigger: rightCard,
-              start: "top 80%",
-              toggleActions: "play reverse play reverse",
-              scrub: false,
-            }
-          });
-        }
-      }
-    });    
 
     return () => {
       if (scrollTrigger) {
