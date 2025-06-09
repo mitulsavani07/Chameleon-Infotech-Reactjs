@@ -12,9 +12,9 @@ function Services() {
   return (
     <>
       <ServicesBanner/>
-      <ScrollingCard/>
-      <ItServices />
-      {/* <SuccessStories/> */}
+      {/* <ScrollingCard/> */}
+      {/* <ItServices /> */}
+      <SuccessStories/>
       <GrowthInfo/>
       <Faq/>
     </>
