@@ -2,7 +2,12 @@ import React, { useEffect, useRef, useState } from "react";
 import Lenis from "@studio-freight/lenis";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useLocation,
+} from "react-router-dom";
 
 import { LenisContext } from "./context/LenisContext";
 
@@ -28,11 +33,11 @@ function ScrollFixer() {
   const location = useLocation();
 
   useEffect(() => {
-    // Run when route changes
+    // Delay helps in some deployed builds where layout takes time
     setTimeout(() => {
       ScrollTrigger.refresh();
-    }, 500); // wait until the page content renders
-  }, [location.pathname]);
+    }, 100);
+  }, [location]);
 
   return null;
 }
@@ -75,7 +80,7 @@ function App() {
       <LenisContext.Provider value={lenisRef.current}>
         <div id="app-wrapper">
           <Router>
-            <ScrollFixer/>
+            <ScrollFixer />
             <ScrollToTop />
             <img
               src={Background}
@@ -89,7 +94,7 @@ function App() {
               <Route path="/services" element={<Services />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/terms-conditions" element={<TermsConditions />} />
-              <Route path="/privacy-policy" element={<PrivacyPolicy/>} />
+              <Route path="/privacy-policy" element={<PrivacyPolicy />} />
               <Route path="/blog" element={<Blog />} />
               <Route path="/blog/:slug" element={<Article />} />
             </Routes>
