@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import Lenis from "@studio-freight/lenis";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 
 import { LenisContext } from "./context/LenisContext";
 
@@ -23,6 +23,19 @@ import PrivacyPolicy from "./pages/PrivacyPolicy";
 // import ServicesBanner from "./sections/ServicesBanner";
 
 gsap.registerPlugin(ScrollTrigger);
+
+function ScrollFixer() {
+  const location = useLocation();
+
+  useEffect(() => {
+    // Run when route changes
+    setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 500); // wait until the page content renders
+  }, [location.pathname]);
+
+  return null;
+}
 
 function App() {
   const lenisRef = useRef(null);
@@ -62,6 +75,7 @@ function App() {
       <LenisContext.Provider value={lenisRef.current}>
         <div id="app-wrapper">
           <Router>
+            <ScrollFixer/>
             <ScrollToTop />
             <img
               src={Background}
